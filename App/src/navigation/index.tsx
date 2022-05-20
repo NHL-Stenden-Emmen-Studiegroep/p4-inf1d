@@ -9,7 +9,7 @@ import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { RootStackParamList } from '../types';
+import { RootStackParamList } from '../../types';
 import { BottomTabNavigator } from './BottomTabNavigator';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {

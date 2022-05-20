@@ -5,7 +5,7 @@ import { Pressable } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
-import { RootTabParamList, RootTabScreenProps } from '../types';
+import { RootTabParamList, RootTabScreenProps } from '../../types';
 
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
