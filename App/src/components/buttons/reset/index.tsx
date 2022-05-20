@@ -1,33 +1,16 @@
 import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Colors from "../../../constants/Colors";
+import { MaterialIcons } from "@expo/vector-icons";
 
-const Play = () => {
-    const [pause, setPause] = useState(false);
-    const togglePause = () => {
-        if(pause) {
-            setPause(false);
-        } else {
-            setPause(true);
-        }
-    }
-
-    if(pause) {
-        return (
-            <Pressable style={Styles.container} onPress={() => togglePause()}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: '90%' }}>
-                    <View style={Styles.line}/>
-                    <View style={Styles.line}/>
-                </View>
-            </Pressable>
-        );
-    } else {
-        return (
-            <Pressable style={Styles.container} onPress={() => togglePause()}>
-                <View style={Styles.triangle}/>
-            </Pressable>
-        );
-    }
+const Reset = () => {
+    return (
+        <Pressable style={Styles.container}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: '90%' }}>
+                <MaterialIcons name="replay" color={Colors.light.colorWhite} style={{fontSize: 40, transform: [{ rotate: '-35deg' }]}}/>
+            </View>
+        </Pressable>
+    );
 }
 
 const Styles = StyleSheet.create({
@@ -62,4 +45,4 @@ const Styles = StyleSheet.create({
     },
 });
 
-export default Play;
+export default Reset;
