@@ -7,15 +7,17 @@ import Background from "../components/Background";
 
 export function LoadingScreen() {
     return (
-
     <View style={styles.container}>
         <Background />
         <Logo width="150px" height="150px"/>
         <Text style={styles.text}>Loading...</Text>
-
     </View>
     )
 }
+
+// setTimeout(function(){
+// window.location.href = './HomeScreen.js';
+// }, 5000);
 
 const styles = StyleSheet.create({
     container: {
