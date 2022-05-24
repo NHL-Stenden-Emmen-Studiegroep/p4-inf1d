@@ -6,13 +6,11 @@
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName } from 'react-native';
-import ModalScreen from '../screens/ModalScreen';
+import ModelScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { RootStackParamList } from '../types';
 import { BottomTabNavigator } from './BottomTabNavigator';
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation({ colorScheme }) {
   return (
     <NavigationContainer theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <RootNavigator />
@@ -20,7 +18,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
   );
 }
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator();
 
 function RootNavigator() {
   return (
@@ -28,7 +26,7 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen name="Modal" component={ModelScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
