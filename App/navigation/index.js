@@ -1,14 +1,11 @@
-/**
- * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
- * https://reactnavigation.org/docs/getting-started
- *
- */
-import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import ModelScreen from '../screens/ModalScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
+
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { BottomTabNavigator } from './BottomTabNavigator';
+import { DrawerNavigator } from './DrawerNavigator';
+import ModalScreen from '../screens/ModalScreen';
 
 export default function Navigation({ colorScheme }) {
   return (
@@ -19,15 +16,13 @@ export default function Navigation({ colorScheme }) {
 }
 
 const Stack = createNativeStackNavigator();
-
-function RootNavigator() {
+export function RootNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+    <Stack.Navigator initialRouteName="Root">
+      <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
+      {/* <Stack.Screen name="Settings" component={DrawerNavigator} /> */}
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModelScreen} />
-      </Stack.Group>
+      <Stack.Screen name="Modal" component={ModalScreen} />
     </Stack.Navigator>
   );
 }
