@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Colors from "../../../constants/Colors";
+import DefaultStyle from "../buttons";
+import timing from '../../timing/timer';
 
-const Play = () => {
-    const [pause, setPause] = useState(false);
+type PlayButtonProps = {
+    pause: boolean,
+    setPause: CallableFunction,
+    func?: CallableFunction
+}
+
+const Play = ({pause, setPause, func}: PlayButtonProps) => {
     const togglePause = () => {
         if(pause) {
             setPause(false);
@@ -12,9 +19,17 @@ const Play = () => {
         }
     }
 
+    const ButtonEventHandler = () => {
+        togglePause();
+
+        if(typeof func === 'function') {
+            func();
+        }
+    }
+
     if(pause) {
         return (
-            <Pressable style={Styles.container} onPress={() => togglePause()}>
+            <Pressable style={[Styles.container, DefaultStyle.button]} onPress={() => ButtonEventHandler()}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: '90%' }}>
                     <View style={Styles.line}/>
                     <View style={Styles.line}/>
@@ -23,7 +38,7 @@ const Play = () => {
         );
     } else {
         return (
-            <Pressable style={Styles.container} onPress={() => togglePause()}>
+            <Pressable style={[Styles.container, DefaultStyle.button]} onPress={() => ButtonEventHandler()}>
                 <View style={Styles.triangle}/>
             </Pressable>
         );
@@ -44,19 +59,19 @@ const Styles = StyleSheet.create({
         height: 0,
         backgroundColor: "transparent",
         borderStyle: "solid",
-        borderLeftWidth: 15,
-        borderRightWidth: 15,
-        borderBottomWidth: 25,
+        borderLeftWidth: 20,
+        borderRightWidth: 20,
+        borderBottomWidth: 30,
         borderBottomLeftRadius: 3,
         borderBottomRightRadius: 3,
-        transform: [{ rotate: '90deg' }, { translateY: -3 }],
+        transform: [{ rotate: '90deg' }, { translateY: -4 }],
         borderLeftColor: "transparent",
         borderRightColor: "transparent",
         borderBottomColor: Colors.light.colorWhite,
     },
     line: {
-        width: 5,
-        height: 25,
+        width: 8,
+        height: 40,
         borderRadius: 5,
         backgroundColor: Colors.light.colorWhite
     },

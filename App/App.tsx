@@ -4,8 +4,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './src/hooks/useCachedResources';
 import useColorScheme from './src/hooks/useColorScheme';
 import Navigation from './src/navigation';
-import Play from './src/components/buttons/play';
-import Reset from './src/components/buttons/reset';
+import Timer from './src/components/layouts/timer';
 
 export default function App() {
   // const isLoadingComplete = useCachedResources();
@@ -17,9 +16,8 @@ export default function App() {
     return (
       <SafeAreaProvider>
         {/* <Navigation colorScheme={colorScheme} /> */}
-        <Play/>
-        <Reset/>
-        <StatusBar />
+        <Timer/>
+        <StatusBar hidden={true}/>
       </SafeAreaProvider>
     );
   // }

@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Colors from "../../../constants/Colors";
 import { MaterialIcons } from "@expo/vector-icons";
+import DefaultStyle from '../buttons';
 
-const Reset = () => {
+type ResetButtonProps = {
+    func: CallableFunction
+}
+
+const Reset = ({func}: ResetButtonProps) => {
     return (
-        <Pressable style={Styles.container}>
+        <Pressable style={[Styles.container, DefaultStyle.button]} onPress={() => func()}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: '90%' }}>
-                <MaterialIcons name="replay" color={Colors.light.colorWhite} style={{fontSize: 40, transform: [{ rotate: '-35deg' }]}}/>
+                <MaterialIcons name="replay" color={Colors.light.colorWhite} style={{fontSize: 60, transform: [{ rotate: '-35deg' }]}}/>
             </View>
         </Pressable>
     );
@@ -21,28 +26,7 @@ const Styles = StyleSheet.create({
         borderRadius: 50,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    triangle: {
-        width: 0,
-        height: 0,
-        backgroundColor: "transparent",
-        borderStyle: "solid",
-        borderLeftWidth: 15,
-        borderRightWidth: 15,
-        borderBottomWidth: 25,
-        borderBottomLeftRadius: 3,
-        borderBottomRightRadius: 3,
-        transform: [{ rotate: '90deg' }, { translateY: -3 }],
-        borderLeftColor: "transparent",
-        borderRightColor: "transparent",
-        borderBottomColor: Colors.light.colorWhite,
-    },
-    line: {
-        width: 5,
-        height: 25,
-        borderRadius: 5,
-        backgroundColor: Colors.light.colorWhite
-    },
+    }
 });
 
 export default Reset;
