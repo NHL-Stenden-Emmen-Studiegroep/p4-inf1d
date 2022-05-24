@@ -1,9 +1,8 @@
 import React from 'react';
-import Svg, {G, Path, SvgUri, } from 'react-native-svg';
+import Svg, {G, Path } from 'react-native-svg';
 
 export function Logo({width, height}) {
   return (
-    // <SvgUri width="200px" height="200px" uri="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/debian.svg" />
         <Svg height={height} width={width} viewBox='0 0 75.324 70.406'>
         <G transform="translate(0.091 -0.156)" />
             <Path d="M7.069,7.039,33.862.111,26.773,26.764.11,33.744Z" transform="translate(37.564 0) rotate(45)" fill="#00adef"/>
