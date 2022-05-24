@@ -9,6 +9,7 @@ import * as React from 'react';
 import ModelScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { BottomTabNavigator } from './BottomTabNavigator';
+import {LoadingScreen} from '../screens/LoadingScreen';
 
 export default function Navigation({ colorScheme }) {
   return (
@@ -23,6 +24,7 @@ const Stack = createNativeStackNavigator();
 function RootNavigator() {
   return (
     <Stack.Navigator>
+      <Stack.Screen name="Loading" component={LoadingScreen} options={{ headerShown: false}}/>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
