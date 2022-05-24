@@ -1,18 +1,13 @@
 import { Button, StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
-import { RootStackScreenProps } from '../types';
 import React, {Component, ReactNode, SyntheticEvent} from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import './BookingCalendar.css'
 
 export default class BookingCalendar extends Component {
     setDates = () => {
-        const events: { start: Date; end: Date; title: string; allDay: boolean; }[] = []
-        this.props.events.map((event: { start: string | number | Date; end: string | number | Date; pet_name: any; human_name: any; }) => {
+        const events= []
+        this.props.events.map((event) => {
            return events.push({
             start: new Date(event.start),
             end: new Date(event.end),
@@ -54,4 +49,4 @@ const styles = StyleSheet.create({
         height: 1,
         width: '80%',
     }   
-});props: any;
+});
