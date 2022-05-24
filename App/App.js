@@ -4,7 +4,7 @@ import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import Navigation from './navigation';
-import BookingCalendar from './screens/CalendarScreen';
+import CalendarScreen from './screens/CalendarScreen';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -15,8 +15,8 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        {/* <Navigation colorScheme={colorScheme} /> */}
-        <BookingCalendar></BookingCalendar>
+        {/*<Navigation colorScheme={colorScheme} />*/}
+        <CalendarScreen></CalendarScreen>
         <StatusBar />
       </SafeAreaProvider>
     );
