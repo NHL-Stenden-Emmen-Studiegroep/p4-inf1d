@@ -1,5 +1,5 @@
 import { Text, View } from "../components/Themed";
-import { ImageBackground, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {Logo} from "../components/Logo";
 import Colors from "../constants/Colors";
 import Background from "../components/Background";
@@ -15,9 +15,6 @@ export function LoadingScreen() {
     )
 }
 
-// setTimeout(function(){
-// window.location.href = './HomeScreen.js';
-// }, 5000);
 
 const styles = StyleSheet.create({
     container: {
@@ -37,7 +34,7 @@ const styles = StyleSheet.create({
         height: 50,
     },
     text: {
-        // fontFamily: 'montserrat',
         color: Colors.light.textColorWhite,
+        // fontFamily: 'montserrat',
     },
 })
