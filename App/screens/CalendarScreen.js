@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 import React, { Component, useState } from 'react';
-import { Calendar, CalendarList, LocaleConfig } from 'react-native-calendars';
+import { Calendar, LocaleConfig, Agenda, CalendarList } from 'react-native-calendars';
 
 LocaleConfig.locales['en'] = {
   monthNames: [
@@ -34,26 +34,28 @@ export default function CalendarScreen(){
             month: _date.getMonth(),
             year: _date.getFullYear()
     });
-
+    
     return(
     <View style={styles.container}>
     <Text style={styles.title}>Calendar</Text>
-    <Calendar/>
+    <CalendarList/>
     </View>
     )
 }          
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginVertical: 75
   },
   title: {
+    marginHorizontal: 30,
     fontSize: 20,
     fontWeight: 'bold'
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: '80%'
   },
 });
