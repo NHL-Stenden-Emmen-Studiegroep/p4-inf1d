@@ -1,30 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 import React, { Component, useState } from 'react';
-import { Calendar, LocaleConfig, Agenda, CalendarList } from 'react-native-calendars';
-
-LocaleConfig.locales['en'] = {
-  monthNames: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
-  monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  today: 'Today'
-};
-LocaleConfig.defaultLocale = 'en';
-
+import { Calendar, LocaleConfig, Agenda, CalendarList, CalendarProps } from 'react-native-calendars';
 
 
 export default function CalendarScreen(){
@@ -37,8 +14,8 @@ export default function CalendarScreen(){
     
     return(
     <View style={styles.container}>
-    <Text style={styles.title}>Calendar</Text>
-    <CalendarList/>
+      <Text style={styles.title}>Calendar</Text>
+      <Calendar style={styles.calendar}></Calendar>
     </View>
     )
 }          
@@ -58,4 +35,8 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%'
   },
+  calendar: {
+    selectedDayBackgroundColor: '#00adf5',
+    selectedDayTextColor: '#ffffff'
+  }
 });

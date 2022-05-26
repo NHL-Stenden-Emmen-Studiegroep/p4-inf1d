@@ -15,8 +15,7 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        {/*<Navigation colorScheme={colorScheme} />*/}
-        <CalendarScreen></CalendarScreen>
+        <Navigation colorScheme={colorScheme} />
         <StatusBar />
       </SafeAreaProvider>
     );
