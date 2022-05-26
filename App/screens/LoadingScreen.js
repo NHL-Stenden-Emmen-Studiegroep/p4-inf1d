@@ -6,6 +6,7 @@ import Background from "../components/Background";
 import {version as appVersion}  from '../package.json';
 
 export function LoadingScreen() {
+
     return (
     <View style={styles.container}>
         <Background style={styles.background} />
@@ -43,6 +44,6 @@ const styles = StyleSheet.create({
         color: Colors.light.textColorBlack,
         position: "absolute",
         left: 10,
-        bottom: 10,
+        bottom: 20,
     }
 })
