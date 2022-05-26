@@ -5,17 +5,10 @@ import { Calendar, LocaleConfig, Agenda, CalendarList, CalendarProps } from 'rea
 
 
 export default function CalendarScreen(){
-    const _date = new Date();
-    const [date, setDate] = useState({
-            day: _date.getDay(),
-            month: _date.getMonth(),
-            year: _date.getFullYear()
-    });
-    
     return(
     <View style={styles.container}>
       <Text style={styles.title}>Calendar</Text>
-      <Calendar style={styles.calendar}></Calendar>
+      <Agenda style={styles.calendar}></Agenda>
     </View>
     )
 }          
