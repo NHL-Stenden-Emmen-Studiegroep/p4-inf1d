@@ -23,12 +23,7 @@
     "expo-splash-screen": "~0.15.1",
     "expo-status-bar": "~1.3.0",
     "expo-system-ui": "~1.2.0",
-<<<<<<< HEAD
     "expo-web-browser": "~10.2.1",
-=======
-    "expo-web-browser": "~10.2.0",
-    "moment": "^2.29.3",
->>>>>>> 21846a7a5065597a2cf91fafc2dec555304e6ab1
     "react": "17.0.2",
     "react-big-calendar": "^0.40.1",
     "react-calendar": "^3.7.0",
