@@ -32,5 +32,3 @@ export default function useCachedResources() {
 
   return isLoadingComplete;
 }
-
-// https://docs.expo.dev/versions/latest/sdk/font/
