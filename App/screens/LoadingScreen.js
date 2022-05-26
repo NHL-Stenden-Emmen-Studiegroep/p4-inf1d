@@ -9,7 +9,7 @@ import {version as appVersion}  from '../package.json';
 export function LoadingScreen({navigation}) {
     useEffect(() => {
         setTimeout(() => {
-            navigation.navigate("Root");
+            navigation.navigate("Welcome");
         }, 1000);
     }, [])
 

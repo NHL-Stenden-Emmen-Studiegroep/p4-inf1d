@@ -10,6 +10,7 @@ import ModelScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { BottomTabNavigator } from './BottomTabNavigator';
 import {LoadingScreen} from '../screens/LoadingScreen';
+import { WelcomeScreen } from '../screens/WelcomeScreen';
 
 export default function Navigation({ colorScheme }) {
   return (
@@ -26,6 +27,7 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Loading" component={LoadingScreen} options={{ headerShown: false}}/>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: true }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModelScreen} />
