@@ -1,7 +1,5 @@
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
-import { Link } from '@react-navigation/native';
-import Navigation from '../navigation';
 
 export default function HomeScreen() {
   return (
