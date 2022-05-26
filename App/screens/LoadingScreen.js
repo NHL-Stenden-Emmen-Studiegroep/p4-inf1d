@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Text, View } from "../components/Themed";
 import { StyleSheet } from 'react-native';
 import {Logo} from "../components/Logo";
@@ -5,7 +6,12 @@ import Colors from "../constants/Colors";
 import Background from "../components/Background";
 import {version as appVersion}  from '../package.json';
 
-export function LoadingScreen() {
+export function LoadingScreen({navigation}) {
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.navigate("Root");
+        }, 1000);
+    }, [])
 
     return (
     <View style={styles.container}>
@@ -16,7 +22,6 @@ export function LoadingScreen() {
     </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     container: {
