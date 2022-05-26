@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 import React, { Component, useState } from 'react';
-import { Calendar, LocaleConfig, Agenda, CalendarList, CalendarProps } from 'react-native-calendars';
-
+import { Calendar, LocaleConfig, Agenda, CalendarList } from 'react-native-calendars';
 
 export default function CalendarScreen(){
     return(
