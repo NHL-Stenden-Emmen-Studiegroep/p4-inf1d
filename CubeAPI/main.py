@@ -12,6 +12,7 @@ async def root():
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
 
+
 @app.get("/meetingAlert/{title}")
 async def meetingAlert(title: str):
     tts(title)
