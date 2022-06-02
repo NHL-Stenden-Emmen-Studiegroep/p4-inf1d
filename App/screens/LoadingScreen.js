@@ -1,17 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Text, View } from "../components/Themed";
 import { StyleSheet } from 'react-native';
 import { Logo } from '../components/Logo';
 import Colors from '../constants/Colors';
 import Background from '../components/Background';
 import { version as appVersion } from '../package.json';
+import { useStorage } from "../hooks/useStorage";
 
 export function LoadingScreen({navigation}) {
-    useEffect(() => {
-        setTimeout(() => {
-            navigation.navigate("Welcome");
-        }, 1000);
-    }, [])
+  const [loadQuickstart, writeItemToStorage] = useStorage("@storage_quickstart");
+
+  const checkState = () => {
+    setTimeout(() => {
+      if(loadQuickstart === "true" || loadQuickstart === "null") {
+        console.log("Loading Welcome Page");
+        navigation.navigate("Welcome");
+      } else {
+        console.log("Loading Home Page");
+        navigation.navigate("Root");
+      }
+      console.log("___________________________________");
+    }, 1000);
+  }
+
+  useEffect(() => {
+    writeItemToStorage("true");
+      checkState();
+    }, []);
 
     return (
     <View style={styles.container}>

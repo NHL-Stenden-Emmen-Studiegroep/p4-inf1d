@@ -3,6 +3,7 @@ import Background from "../components/Background";
 import { StyleSheet } from 'react-native';
 import Colors from "../constants/Colors";
 
+
 export function WelcomeScreen() {
     return (
         <View style={styles.container}>
@@ -12,10 +13,11 @@ export function WelcomeScreen() {
     )
 }
 
+
 const styles = StyleSheet.create({
     background: {
         position: 'absolute',
-        top: -65,
+        top: 0,
         left: 0,
         right: 16,
         bottom: 0,
