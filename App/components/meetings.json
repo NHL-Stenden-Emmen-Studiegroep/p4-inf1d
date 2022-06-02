@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Meeting",
+        "date": "31-5-2022",
+        "location": "Emmen",
+        "description": "Belangrijke meeting met Joe"
+    },
+    {
+        "id": 2,
+        "title": "Tandarts",
+        "date": "12-6-2022",
+        "location": "Emmermeer",
+        "description": "Tandarts a neef"
+    },
+    {
+        "id": 3,
+        "title": "Feest",
+        "date": "13-6-2022",
+        "location": "Tilburg",
+        "description": "Concert van zanger"
+    }
+]

@@ -1,18 +1,43 @@
 import { StyleSheet } from 'react-native';
-import { Text, View } from '../components/Themed';
-import React, { Component, useState } from 'react';
-import { Calendar, LocaleConfig, Agenda, CalendarList, CalendarProps } from 'react-native-calendars';
+import { Text, View, Pressable } from '../components/Themed';
+import meetings from "../components/meetings.json";
+import React, { useState } from 'react';
+import { Button } from 'react-native-web';
+import { Agenda, Calendar } from "react-native-calendars"
 
+export default function CalendarScreen(meeting){
+    const [selectedDate, setSelectedDate] = useState('');
 
-export default function CalendarScreen(){
-    return(
-    <View style={styles.container}>
-      <Text style={styles.title}>Calendar</Text>
-      <Agenda style={styles.calendar}></Agenda>
-    </View>
+    const cc = (meeting) => {
+      return (
+        <View key={meeting.id}>
+          <Text>
+            {meeting.title}
+            <Text>
+              {meeting.description}
+              {meeting.date}
+            </Text>
+          </Text>
+        </View>
+      )
+    }
+
+    return (
+      <View style={styles.container}>
+        
+          <Text style={styles.title}>Add Meeting</Text>
+        
+        <Agenda key={meeting.id}>
+          {meetings.map(meeting => cc(meeting))}
+        </Agenda>
+      </View>
     )
-}          
+  } 
+
 const styles = StyleSheet.create({
+  body: {
+    backgroundColor: "white"
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -28,8 +53,10 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%'
   },
-  calendar: {
-    selectedDayBackgroundColor: '#00adf5',
-    selectedDayTextColor: '#ffffff'
+  text: {
+    marginHorizontal: 30,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'right'
   }
 });
