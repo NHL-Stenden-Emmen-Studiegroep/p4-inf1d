@@ -1,36 +1,54 @@
 import { Text, View } from "../components/Themed";
 import Background from "../components/Background";
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 import Colors from "../constants/Colors";
+import Swiper from 'react-native-swiper';
+
 
 
 export function WelcomeScreen() {
     return (
-        <View style={styles.container}>
+        <>
         <Background style={styles.background} />
-        <Text style={styles.text}>Welcome to our Cubic Calender App!</Text>
+         <Swiper style={styles.wrapper} showsButtons={false}>
+        <View style={styles.slide}>
+          <Text style={styles.text}>Welcome to our Cubic Calender App!</Text>
         </View>
+        <View style={styles.slide}>
+          <Text style={styles.text}>In this app you can connect your Cube</Text>
+        </View>
+        <View style={styles.slide}>
+          <Text style={styles.text}>Connect Your device!</Text>
+          <Button style={styles.button} title="Connect Your Cube"/>
+        </View>
+      </Swiper>
+      </>
     )
 }
 
 
 const styles = StyleSheet.create({
     background: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 16,
-        bottom: 0,
-        zIndex: -100
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 16,
+      bottom: 0,
+      zIndex: -100
     },
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
+    slide: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
     },
 
     text: {
-        color: Colors.light.textColorWhite,
-    }
+      color: Colors.light.textColorWhite,
+    },
+
+    button: {
+      position: 'absolute',
+      bottom: 25,
+    },
 
 })

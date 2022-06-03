@@ -12,13 +12,13 @@ export function LoadingScreen({navigation}) {
 
   const checkState = () => {
     setTimeout(() => {
-      if(loadQuickstart === "true" || loadQuickstart === "null") {
+      // if(loadQuickstart === "true" || loadQuickstart === "null") {
         console.log("Loading Welcome Page");
         navigation.navigate("Welcome");
-      } else {
-        console.log("Loading Home Page");
-        navigation.navigate("Root");
-      }
+      // } else {
+      //   console.log("Loading Home Page");
+      //   navigation.navigate("Root");
+      // }
       console.log("___________________________________");
     }, 1000);
   }
