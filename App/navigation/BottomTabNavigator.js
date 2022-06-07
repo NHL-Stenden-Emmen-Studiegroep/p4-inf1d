@@ -10,6 +10,10 @@ import HomeScreen from '../screens/HomeScreen';
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 const BottomTab = createBottomTabNavigator();
+
+/**
+ * Not in use as of now. will find a place for it later.
+ */
 export function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 

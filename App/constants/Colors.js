@@ -1,3 +1,5 @@
+const tintColorLight = '#008FC6';
+const tintColorDark = '#fff';
 const colorBlack = '#1F1F1F';
 const colorWhite = '#F1F1F1';
 
