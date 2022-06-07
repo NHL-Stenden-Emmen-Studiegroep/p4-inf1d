@@ -2,7 +2,7 @@ const colorBlack = '#1F1F1F';
 const colorWhite = '#F1F1F1';
 
 const colorBlue700 = '#00752A';
-const colorBlue500 = '008FC6'
+const colorBlue500 = '#008FC6';
 
 export default {
   light: {
