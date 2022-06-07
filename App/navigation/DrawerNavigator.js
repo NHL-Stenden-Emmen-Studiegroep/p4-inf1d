@@ -1,4 +1,4 @@
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import HomeScreen from '../screens/HomeScreen';
@@ -8,34 +8,48 @@ const Drawer = createDrawerNavigator();
 
 export function DrawerNavigator() {
   return (
-    <Drawer.Navigator initialRouteName="Home" screenOptions={{ drawerActiveTintColor: Colors.light.tint }}>
-      <Drawer.Screen name="Home" component={HomeScreen} options={customDrawerOptions.home} />
-      <Drawer.Screen name="Calendar" component={HomeScreen} options={customDrawerOptions.calendar} />
-      <Drawer.Screen name="Notes" component={HomeScreen} options={customDrawerOptions.notes} />
-      <Drawer.Screen name="To-Do" component={HomeScreen} options={customDrawerOptions.todo} />
-      <Drawer.Screen name="Settings" component={HomeScreen} options={customDrawerOptions.settings} />
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        drawerActiveBackgroundColor: Colors.light.colorBlue700,
+        drawerActiveTintColor: Colors.light.textColorWhite,
+        drawerInactiveTintColor: Colors.light.textColorBlack,
+        drawerLabelStyle: {
+          marginLeft: -10,
+          fontFamily: 'roboto',
+          fontSize: 15,
+        },
+      }}
+    >
+      <Drawer.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ drawerIcon: ({ Color }) => <DrawerIcon name="home-outline" color={Color} size={22} /> }}
+      />
+      <Drawer.Screen
+        name="Calendar"
+        component={HomeScreen}
+        options={{ drawerIcon: ({ Color }) => <DrawerIcon name="calendar-outline" color={Color} /> }}
+      />
+      <Drawer.Screen
+        name="Notes"
+        component={HomeScreen}
+        options={{ drawerIcon: ({ Color }) => <DrawerIcon name="clipboard-outline" color={Color} /> }}
+      />
+      <Drawer.Screen
+        name="To-Do"
+        component={HomeScreen}
+        options={{ drawerIcon: ({ Color }) => <DrawerIcon name="checkmark-done" color={Color} /> }}
+      />
+      <Drawer.Screen
+        name="Settings"
+        component={HomeScreen}
+        options={{ drawerIcon: ({ Color }) => <DrawerIcon name="settings-outline" color={Color} /> }}
+      />
     </Drawer.Navigator>
   );
 }
 
-const customDrawerOptions = {
-  home: {
-    drawerIcon: ({ Color }) => <DrawerIcon name="home" color={Color} />,
-  },
-  calendar: {
-    drawerIcon: ({ Color }) => <DrawerIcon name="calendar-today" color={Color} />,
-  },
-  notes: {
-    drawerIcon: ({ Color }) => <DrawerIcon name="notes" color={Color} />,
-  },
-  todo: {
-    drawerIcon: ({ Color }) => <DrawerIcon name="format-list-bulleted" color={Color} />,
-  },
-  settings: {
-    drawerIcon: ({ Color }) => <DrawerIcon name="settings" color={Color} />,
-  },
-};
-
 function DrawerIcon(props) {
-  return <MaterialIcons size={30} {...props} />;
+  return <Ionicons size={22} {...props} />;
 }
