@@ -1,4 +1,3 @@
-import { useColorScheme } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -8,10 +7,8 @@ import Colors from '../constants/Colors';
 const Drawer = createDrawerNavigator();
 
 export function DrawerNavigator() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Drawer.Navigator initialRouteName="Home" screenOptions={{ drawerActiveTintColor: Colors[colorScheme].tint }}>
+    <Drawer.Navigator initialRouteName="Home" screenOptions={{ drawerActiveTintColor: Colors.light.tint }}>
       <Drawer.Screen name="Home" component={HomeScreen} options={customDrawerOptions.home} />
       <Drawer.Screen name="Calendar" component={HomeScreen} options={customDrawerOptions.calendar} />
       <Drawer.Screen name="Notes" component={HomeScreen} options={customDrawerOptions.notes} />
