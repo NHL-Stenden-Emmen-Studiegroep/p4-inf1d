@@ -16,9 +16,10 @@ export default function Navigation({ colorScheme }) {
 }
 
 const Stack = createNativeStackNavigator();
+
 export function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Loading">
+    <Stack.Navigator initialRouteName="Root">
       <Stack.Screen name="Loading" component={LoadingScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
