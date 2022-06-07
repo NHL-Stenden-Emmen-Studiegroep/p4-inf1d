@@ -2,10 +2,10 @@ import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
-import NotFoundScreen from '../screens/NotFoundScreen';
-import { BottomTabNavigator } from './BottomTabNavigator';
-import { DrawerNavigator } from './DrawerNavigator';
 import ModalScreen from '../screens/ModalScreen';
+import NotFoundScreen from '../screens/NotFoundScreen';
+import { DrawerNavigator } from './DrawerNavigator';
+import { LoadingScreen } from '../screens/LoadingScreen';
 
 export default function Navigation({ colorScheme }) {
   return (
@@ -18,9 +18,9 @@ export default function Navigation({ colorScheme }) {
 const Stack = createNativeStackNavigator();
 export function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Root">
+    <Stack.Navigator initialRouteName="Loading">
+      <Stack.Screen name="Loading" component={LoadingScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
-      {/* <Stack.Screen name="Settings" component={DrawerNavigator} /> */}
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="Modal" component={ModalScreen} />
     </Stack.Navigator>
