@@ -3,6 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import HomeScreen from '../screens/HomeScreen';
 import Colors from '../constants/Colors';
+import { ConnectScreen } from '../screens/ConnectScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -43,7 +44,7 @@ export function DrawerNavigator() {
       />
       <Drawer.Screen
         name="Settings"
-        component={HomeScreen}
+        component={ConnectScreen}
         options={{ drawerIcon: ({ Color }) => <DrawerIcon name="settings-outline" color={Color} /> }}
       />
     </Drawer.Navigator>
