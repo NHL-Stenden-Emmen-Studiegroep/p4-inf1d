@@ -6,7 +6,6 @@ import { DrawerNavigator } from './DrawerNavigator';
 import { LoadingScreen } from '../screens/LoadingScreen';
 import { WelcomeScreen } from '../screens/WelcomeScreen';
 import { ConnectScreen } from '../screens/ConnectScreen';
-import { useStorage } from '../hooks/useStorage';
 
 export default function Navigation({ colorScheme }) {
   return (
