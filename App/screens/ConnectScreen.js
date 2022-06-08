@@ -3,18 +3,18 @@ import { View, Text } from "../components/Themed";
 import { StyleSheet, Pressable, TextInput } from 'react-native';
 import Colors from "../constants/Colors";
 
-export function ConnectScreen() {
+export function ConnectScreen({navigation}) {
     return (
       <>
         <Background style={styles.background} />
         <View style={styles.container}>
           <View style={styles.flex}>
-            <TextInput style={styles.input} placeholder="Wifi SSID"/>
+            <TextInput style={styles.input} placeholder="Wifi SSID" />
           </View>
           <View style={styles.flex}>
-            <TextInput style={styles.input} placeholder="Wifi Wachtwoord"/>
+            <TextInput style={styles.input} placeholder="Wifi Wachtwoord" />
           </View>
-          <Pressable style={styles.button} onPress={""} >
+          <Pressable style={styles.button} onPress={() => navigation.navigate('Root')}>
             <Text style={styles.text}>Submit</Text>
           </Pressable>
         </View>

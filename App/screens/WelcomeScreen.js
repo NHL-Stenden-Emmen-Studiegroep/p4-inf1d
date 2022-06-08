@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
       color: Colors.light.textColorWhite,
     },
 
-    textSwipe: {
-      position: "absolute",
-      bottom: 120,
-      color: Colors.light.textColorWhite,
-    },
+    // textSwipe: {
+    //   position: "absolute",
+    //   bottom: 120,
+    //   color: Colors.light.textColorWhite,
+    // },
 
     button: {
       paddingVertical: 12,
