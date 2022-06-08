@@ -1,25 +1,29 @@
 import Background from "../components/Background";
 import { View, Text } from "../components/Themed";
-import { StyleSheet, Pressable } from 'react-native';
+import { StyleSheet, Pressable, TextInput } from 'react-native';
 import Colors from "../constants/Colors";
 
 export function ConnectScreen() {
     return (
-        <>
+      <>
         <Background style={styles.background} />
         <View style={styles.container}>
-            <Text style={styles.text}>Selecteer uw Wifi Netwerk</Text>
-            <Pressable style={styles.button} onPress={() => navigation.navigate("Connect")}>
+          <View style={styles.flex}>
+            <TextInput style={styles.input} placeholder="Wifi SSID"/>
+          </View>
+          <View style={styles.flex}>
+            <TextInput style={styles.input} placeholder="Wifi Wachtwoord"/>
+          </View>
+          <Pressable style={styles.button} onPress={""} >
             <Text style={styles.text}>Submit</Text>
           </Pressable>
         </View>
-        </>
-    )
+      </>
+    );
 }
 
 const styles = StyleSheet.create({
   background: {
-
     position: 'absolute',
     top: 0,
     left: 0,
@@ -27,10 +31,25 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: -100,
   },
+
+  flex: {
+    display: "flex",
+  },
+
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  input: {
+    height: 35,
+    width: 160,
+    backgroundColor: Colors.light.textColorWhite,
+    margin: 12,
+    padding: 10,
+    borderWidth: 0,
+    borderRadius: 4,
   },
 
   text: {
@@ -43,6 +62,6 @@ const styles = StyleSheet.create({
       borderRadius: 4,
       backgroundColor: Colors.light.colorBlue700,
       position: "absolute",
-      bottom: 300,
+      bottom: 270,
     },
 })
