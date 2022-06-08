@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
-import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { DrawerNavigator } from './DrawerNavigator';
 import { LoadingScreen } from '../screens/LoadingScreen';
@@ -23,7 +22,6 @@ export function RootNavigator() {
       <Stack.Screen name="Loading" component={LoadingScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Screen name="Modal" component={ModalScreen} />
     </Stack.Navigator>
   );
 }
