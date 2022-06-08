@@ -13,8 +13,6 @@ export function LoadingScreen({ navigation }) {
   const checkState = useCallback(async () => {
     readItemFromStorage().then((item) => {
       setTimeout(() => {
-        console.log(item);
-
         if (item === 'true' || item === null) {
           writeItemToStorage('false');
           navigation.navigate('Welcome');
