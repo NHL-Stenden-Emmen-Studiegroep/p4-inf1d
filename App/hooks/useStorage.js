@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 export function useStorage(storeName) {
