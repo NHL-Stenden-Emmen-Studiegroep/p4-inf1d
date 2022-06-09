@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import meetings from "../components/meetings.json";
+import meetings from "../../components/meetings.json";
 import { StyleSheet, Alert, Modal, Pressable, TextInput } from "react-native";
-import {View, Text} from "../components/Themed";
+import {View, Text} from "../../components/Themed";
 import DatePicker from "react-native-modern-datepicker";
 import { Agenda } from "react-native-calendars";
+import { AgendaItem } from "./AgendaItem";
 
-export default function CalendarScreen(meetings){
+export default function CalendarScreen(){
+    const today = new Date();
+
+    const [getToday, setToday]  = useState(today.getDay);
+    const [getMonth, setMonth]  = useState(today.getMonth);
+    const [getFullYear, setFullYear]  = useState(today.getFullYear);
   const [modalVisible, setModalVisible] = useState(false);
   const [text, onChangeText] = useState("");
 
@@ -34,21 +40,19 @@ export default function CalendarScreen(meetings){
                 </View>
         </Modal>
         <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => setModalVisible(true)}>
-            <Text style={styles.title}>+</Text>
+            <Text style={styles.textStyle}>+</Text>
         </Pressable> 
-        <Agenda 
+        <Agenda
+        onDayChange={(day) => setToday(day)}
         items={{
-            '2022-06-07': [{}]
+           '2022-06-08': [{}]
         }}
-        renderItem={() => {
-            return <View key={meetings.date}>
-                <Text>Title: {meetings.title}</Text>
-                <Text>Location: {meetings.location}</Text>
-                <Text>Description: {meetings.description}</Text>
-            </View>;
+        renderItem={(item) => {
+            return (
+                meetings.map(meeting => <AgendaItem item={meeting} style />)
+            )
         }}>
-        </Agenda>
-        
+        </Agenda> 
       </View>
     );
 }
@@ -69,17 +73,17 @@ const styles = StyleSheet.create({
   input: {
       height: 35,
       width: 160,
-      margin: 12,
+      margin: 5,
       borderWidth: 0,
       padding: 10,
       backgroundColor: "#F4F4F4"
     },
   modalView: {
       display: "flex",
-      margin: 20,
+      margin: 10,
       backgroundColor: "white",
       borderRadius: 20,
-      padding: 35,
+      padding: 25,
       alignItems: "center",
       shadowColor: '#000',
       shadowOffset: {
@@ -96,13 +100,14 @@ const styles = StyleSheet.create({
       elevation: 2
   },
   buttonOpen: {
-      backgroundColor: '#f4f4f4'
+      backgroundColor: '#28B3EB'
   },
   buttonClose: {
-      backgroundColor: "#f4f4f4"
+      backgroundColor: "#28B3EB"
   },
   textStyle: {
-      color: "black",
+      fontSize: 15,
+      color: "white",
       fontWeight: "bold",
       textAlign: "center"
   },
@@ -111,7 +116,7 @@ const styles = StyleSheet.create({
       textAlign: "center"
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     textAlign: "center"
   }

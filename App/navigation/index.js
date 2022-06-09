@@ -6,7 +6,7 @@
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import CalendarScreen from '../screens/CalendarScreen';
+import CalendarScreen from '../screens/calendar/CalendarScreen';
 import ModelScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { BottomTabNavigator } from './BottomTabNavigator';
