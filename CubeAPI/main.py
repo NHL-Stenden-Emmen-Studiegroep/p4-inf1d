@@ -1,12 +1,14 @@
 from typing import Optional
 from fastapi import FastAPI
+from src.log.log import Log
+
 from src.connection.connect import connect
-from src.tts.TTS import tts
-from winrt.windows.devices import radios
+from src.tts.TTS import TTS
 from src.bluetooth.bluetooth import getConnection, toggleBluetooth
-import asyncio
 
 app = FastAPI()
+
+Log().cleanFile()
 
 
 @app.get("/")
@@ -28,13 +30,15 @@ async def getDevices():
 
 
 @app.get("/logs/get")
-def getLog(date: Optional[str]):
-    return {"test"}
+def getLog(msg: Optional[str] = None, date: Optional[str] = None):
+    l = Log()
+    return l.getLogs(date)
 
 
 @app.get("/alert/{text}")
 def alert(text: str):
-    tts(text)
+    tts = TTS(text)
+    tts.play()
     return {"status": "Success"}
 
 
