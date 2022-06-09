@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from 'react';
-import { Text, View } from '../components/Themed';
+import { useEffect } from "react";
+import { Text, View } from "../components/Themed";
 import { StyleSheet } from 'react-native';
 import { Logo } from '../components/Logo';
 import Colors from '../constants/Colors';
