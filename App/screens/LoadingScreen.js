@@ -5,30 +5,29 @@ import { Logo } from '../components/Logo';
 import Colors from '../constants/Colors';
 import Background from '../components/Background';
 import { version as appVersion } from '../package.json';
-import { useStorage } from "../hooks/useStorage";
+import { useStorage } from '../hooks/useStorage';
 
-export function LoadingScreen({navigation}) {
-  const [loadQuickstart, writeItemToStorage] = useStorage("@storage_quickstart");
+export function LoadingScreen({ navigation }) {
+  const [readItemFromStorage, writeItemToStorage] = useStorage('@storage_quickstart');
 
-  const checkState = () => {
-    setTimeout(() => {
-      // if(loadQuickstart === "true" || loadQuickstart === "null") {
-        console.log("Loading Welcome Page");
-        navigation.navigate("Welcome");
-      // } else {
-      //   console.log("Loading Home Page");
-      //   navigation.navigate("Root");
-      // }
-      console.log("___________________________________");
-    }, 1000);
-  }
+  const checkState = useCallback(async () => {
+    readItemFromStorage().then((item) => {
+      setTimeout(() => {
+        if (item === 'true' || item === null) {
+          writeItemToStorage('false');
+          navigation.navigate('Welcome');
+        } else {
+          navigation.navigate('Root');
+        }
+      }, 1000);
+    });
+  }, []);
 
   useEffect(() => {
-    writeItemToStorage("true");
-      checkState();
-    }, []);
+    checkState();
+  }, []);
 
-    return (
+  return (
     <View style={styles.container}>
       <Background style={styles.background} />
       <Logo width="150px" height="150px" />
