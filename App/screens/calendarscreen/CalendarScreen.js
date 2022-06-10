@@ -2,19 +2,49 @@ import React, { useState } from "react";
 import meetings from "../../components/meetings.json";
 import { StyleSheet, Alert, Modal, Pressable, TextInput } from "react-native";
 import {View, Text} from "../../components/Themed";
-import DatePicker from "react-native-modern-datepicker";
-import { Agenda } from "react-native-calendars";
+import { Agenda, AgendaList } from "react-native-calendars";
 import { AgendaItem } from "./AgendaItem";
+import DatePicker from "react-datepicker";
 
 export default function CalendarScreen(){
-    const today = new Date();
+    const [events, setEvents] = useState({});
+    const [marksDate, setMarksDate] = useState({});
+    const [refreshCalendar, setRefreshCalendar] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [text, onChangeText] = useState("");
+    const [startDate, setStartDate] = useState(new Date());
 
-    const [getToday, setToday]  = useState(today.getDay);
-    const [getMonth, setMonth]  = useState(today.getMonth);
-    const [getFullYear, setFullYear]  = useState(today.getFullYear);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [text, onChangeText] = useState("");
+    const onAddEventSubmit = () => {
+        setRefreshCalendar(true);
+        let meetings = events;
+        let mark = {};
+        let eventDetails = {
+            date: '2022-06-10',
+            title: 'Your Event Title'
+        }
 
+        if (!meetings[eventDetails.date]) {
+            meetings[eventDetails.date] = [];
+        }
+
+        meetings[eventDetails.date].push(eventDetails);
+
+        mark[eventDetails.date] = {
+            customStyles: {
+                container: {
+                    backgroundColor: '#0f0',
+                },
+                text: {
+                    color: 'white',
+                    fontWeight: 'bold',
+                },
+            },
+        };
+
+        setEvents(meetings);
+        setMarksDate(mark);
+        setRefreshCalendar(false);
+    }
   return (
     <View style={styles.container}>
         <Modal animationType="fade" transparent={true} visible={modalVisible} onRequestClose={() => {
@@ -32,8 +62,7 @@ export default function CalendarScreen(){
                     <View style={styles.flex}>
                         <TextInput style={styles.input} onChangeText={onChangeText} placeholder="Description..."></TextInput>
                     </View>
-                    <DatePicker
-                    minuteInterval={1}></DatePicker>
+                    <DatePicker></DatePicker>
                     <Pressable style={[styles.button, styles.buttonClose]} onPress={() => setModalVisible(!modalVisible)}>
                         <Text style={styles.textStyle}>Confirm</Text>
                     </Pressable>
@@ -42,16 +71,8 @@ export default function CalendarScreen(){
         <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => setModalVisible(true)}>
             <Text style={styles.textStyle}>+</Text>
         </Pressable> 
-        <Agenda
-        onDayChange={(day) => setToday(day)}
-        items={{
-           '2022-06-08': [{}]
-        }}
-        renderItem={(item) => {
-            return (
-                meetings.map(meeting => <AgendaItem item={meeting} style />)
-            )
-        }}>
+        <Agenda>
+            
         </Agenda> 
       </View>
     );

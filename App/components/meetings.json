@@ -3,7 +3,11 @@
         "date": "2022-05-31",
         "title": "Meeting",
         "location": "Emmen",
-        "description": "Belangrijke meeting met Joe"
+        "description": "Belangrijke meeting met Joe",
+        "time": {
+            "begin": "hh:mm",
+            "end": "hh:mm"
+        }
     },
     {
         "date": "2022-06-08",
