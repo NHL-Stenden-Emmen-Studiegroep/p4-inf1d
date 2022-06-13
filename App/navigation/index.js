@@ -1,17 +1,12 @@
-/**
- * If you are not familiar with React Navigation, refer to the "Fundamentals" guide:
- * https://reactnavigation.org/docs/getting-started
- *
- */
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import NewCalendar from '../screens/calendar/NewCalendar';
-import CalendarScreen from '../screens/calendar/CalendarScreen';
+import NewCalendar from '../screens/calendarscreen/Calendar/NewCalendar';
+import CalendarScreen from '../screens/calendarscreen/CalendarScreen';
 import ModelScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { BottomTabNavigator } from './BottomTabNavigator';
-import AddMeeting from '../screens/AddMeeting';
+import AddMeeting from '../screens/calendarscreen/AddMeeting';
 export default function Navigation({ colorScheme }) {
   return (
     <NavigationContainer theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import meetings from "../components/meetings.json";
+import meetings from "../../components/meetings.json";
 import { StyleSheet, Alert, Modal, Pressable, TextInput } from "react-native";
-import {View, Text} from "../components/Themed";
+import {View, Text} from "../../components/Themed";
 import DatePicker from "react-native-modern-datepicker";
 
 export default function AddMeeting() {
