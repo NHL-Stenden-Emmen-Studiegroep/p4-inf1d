@@ -7453,6 +7453,13 @@
     "react-freeze" "^1.0.0"
     "warn-once" "^0.1.0"
 
+"react-native-stopwatch-timer@^0.0.21":
+  "integrity" "sha512-qFFsD85NkBT1nxo32HMGq3XAtQyMC09p9ZDIEuOED2BOxgs0UpWg/FSTA0MmEoIKMyXUwSE5VxEzBaGP3z1HFw=="
+  "resolved" "https://registry.npmjs.org/react-native-stopwatch-timer/-/react-native-stopwatch-timer-0.0.21.tgz"
+  "version" "0.0.21"
+  dependencies:
+    "prop-types" "^15.7.2"
+
 "react-native-svg-transformer@^1.0.0":
   "integrity" "sha512-ALHU5VvLLyKM/BvyEG7VYJmqglvaXtU7mGRCxrEwwpJO/GBf1ZMUzc4AeJAjSodj7yYtlDYRxNSt9ySWpaa6JQ=="
   "resolved" "https://registry.npmjs.org/react-native-svg-transformer/-/react-native-svg-transformer-1.0.0.tgz"
