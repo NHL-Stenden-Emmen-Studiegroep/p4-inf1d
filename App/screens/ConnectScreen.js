@@ -1,25 +1,53 @@
-import Background from "../components/Background";
-import { View, Text } from "../components/Themed";
+import { useState, useContext } from 'react';
+import Background from '../components/Background';
+import { View, Text } from '../components/Themed';
 import { StyleSheet, Pressable, TextInput } from 'react-native';
-import Colors from "../constants/Colors";
+import Colors from '../constants/Colors';
+import { StateContext } from '../components/StateContext';
+import { useStorage } from '../hooks/useStorage';
 
-export function ConnectScreen({navigation}) {
-    return (
-      <>
-        <Background style={styles.background} />
-        <View style={styles.container}>
-          <View style={styles.flex}>
-            <TextInput style={styles.input} placeholder="Wifi SSID" />
-          </View>
-          <View style={styles.flex}>
-            <TextInput style={styles.input} placeholder="Wifi Wachtwoord" />
-          </View>
-          <Pressable style={styles.button} onPress={() => navigation.navigate('Root')}>
-            <Text style={styles.text}>Submit</Text>
-          </Pressable>
+export function ConnectScreen({ navigation }) {
+  const [_, writeItemToStorage] = useStorage('@storage_quickstart');
+  const [__, setHardwareIp] = useContext(StateContext);
+
+  const [error, setError] = useState(false);
+  const [userInput, setUserInput] = useState('192.168.2.1');
+
+  return (
+    <>
+      <Background style={styles.background} />
+      <View style={styles.container}>
+        <View style={styles.flex}>
+          <Text style={styles.text}>Voer hier de IP address in</Text>
+          {error && <Text style={styles.textError}>Het ingevoerde ip is niet geldig</Text>}
         </View>
-      </>
-    );
+        <View style={styles.flex}>
+          <TextInput
+            style={styles.input}
+            onChangeText={(value) => setUserInput(value)}
+            keyboardType={'default'}
+            placeholder={userInput}
+          />
+        </View>
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            let regex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+
+            if (regex.test(userInput)) {
+              setHardwareIp(userInput);
+              writeItemToStorage('false');
+              navigation.navigate('Root');
+            } else {
+              setError(true);
+            }
+          }}
+        >
+          <Text style={styles.text}>Submit</Text>
+        </Pressable>
+      </View>
+    </>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -33,7 +61,7 @@ const styles = StyleSheet.create({
   },
 
   flex: {
-    display: "flex",
+    display: 'flex',
   },
 
   container: {
@@ -56,12 +84,16 @@ const styles = StyleSheet.create({
     color: Colors.light.textColorWhite,
   },
 
+  textError: {
+    color: 'red',
+  },
+
   button: {
-      paddingVertical: 12,
-      paddingHorizontal: 32,
-      borderRadius: 4,
-      backgroundColor: Colors.light.colorBlue700,
-      position: "absolute",
-      bottom: 270,
-    },
-})
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    backgroundColor: Colors.light.colorBlue700,
+    position: 'absolute',
+    bottom: 270,
+  },
+});

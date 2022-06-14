@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Text, View } from "../components/Themed";
+import { useEffect, useCallback } from 'react';
+import { Text, View } from '../components/Themed';
 import { StyleSheet } from 'react-native';
 import { Logo } from '../components/Logo';
 import Colors from '../constants/Colors';
@@ -8,13 +8,12 @@ import { version as appVersion } from '../package.json';
 import { useStorage } from '../hooks/useStorage';
 
 export function LoadingScreen({ navigation }) {
-  const [readItemFromStorage, writeItemToStorage] = useStorage('@storage_quickstart');
+  const [readItemFromStorage] = useStorage('@storage_quickstart');
 
   const checkState = useCallback(async () => {
     readItemFromStorage().then((item) => {
       setTimeout(() => {
         if (item === 'true' || item === null) {
-          writeItemToStorage('false');
           navigation.navigate('Welcome');
         } else {
           navigation.navigate('Root');
