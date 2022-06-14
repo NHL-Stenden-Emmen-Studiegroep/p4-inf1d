@@ -5,6 +5,7 @@ import { StyleSheet, Pressable, TextInput } from 'react-native';
 import Colors from '../constants/Colors';
 import { StateContext } from '../components/StateContext';
 import { useStorage } from '../hooks/useStorage';
+import { validateIp } from '../constants/Regex';
 
 export function ConnectScreen({ navigation }) {
   const [_, writeItemToStorage] = useStorage('@storage_quickstart');
@@ -32,9 +33,7 @@ export function ConnectScreen({ navigation }) {
         <Pressable
           style={styles.button}
           onPress={() => {
-            let regex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
-
-            if (regex.test(userInput)) {
+            if (validateIp(userInput)) {
               setHardwareIp(userInput);
               writeItemToStorage('false');
               navigation.navigate('Root');
