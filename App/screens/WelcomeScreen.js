@@ -14,11 +14,9 @@ export function WelcomeScreen({ navigation }) {
         <View style={styles.slide}>
           <Logo width="150px" height="150px" />
           <Text style={styles.text}>Welcome to our Cubic Calender App!</Text>
-          {/* <Text style={styles.textSwipe}>&#60;&#60;&#60; SWIPE NAAR LINKS OM DOOR TE GAAN </Text> */}
         </View>
         <View style={styles.slide}>
           <Text style={styles.text}>In this app you can connect your Cube</Text>
-          {/* <Text style={styles.textSwipe}>&#60;&#60;&#60; SWIPE NAAR LINKS OM DOOR TE GAAN </Text> */}
         </View>
         <View style={styles.slide}>
           <Text style={styles.text}>Connect Your device!</Text>
