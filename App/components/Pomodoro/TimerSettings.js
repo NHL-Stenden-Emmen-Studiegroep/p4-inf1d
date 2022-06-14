@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { View, Text } from "../components/Themed"
-import Colors from '../constants/Colors';
-import Settings from '../assets/settings/PomodoroTimer.json';
+import { View, Text } from "../Themed"
+import Colors from '../../constants/Colors';
+import Settings from '../../assets/settings/PomodoroTimer.json';
 
 
 export function TimerSettingsScreen() {

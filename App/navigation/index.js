@@ -6,8 +6,6 @@ import { DrawerNavigator } from './DrawerNavigator';
 import { LoadingScreen } from '../screens/LoadingScreen';
 import { WelcomeScreen } from '../screens/WelcomeScreen';
 import { ConnectScreen } from '../screens/ConnectScreen';
-import { TimerScreen } from '../screens/TimerScreen';
-import { TimerSettingsScreen } from '../screens/TimerSettingsScreen';
 
 export default function Navigation({ colorScheme }) {
   return (
@@ -26,8 +24,6 @@ export function RootNavigator() {
       <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Connect" component={ConnectScreen} options={{ headerShown: true }} />
-      <Stack.Screen name="Timer" component={TimerScreen} options={{ headerShown: true }} />
-      <Stack.Screen name="TimerSettings" component={TimerSettingsScreen} options={{ headerShown: true }} />
     </Stack.Navigator>
   );
 }

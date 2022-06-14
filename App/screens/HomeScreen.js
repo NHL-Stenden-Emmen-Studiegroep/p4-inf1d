@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
-import { TimerScreen } from './TimerScreen';
+import { TimerScreen } from '../components/Pomodoro/Timer';
 
 export default function HomeScreen() {
   return (
