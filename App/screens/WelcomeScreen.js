@@ -4,7 +4,6 @@ import { StyleSheet, Pressable } from 'react-native';
 import Colors from '../constants/Colors';
 import Swiper from 'react-native-swiper';
 import { Logo } from '../components/Logo';
-import { useStorage } from '../hooks/useStorage';
 
 export function WelcomeScreen({ navigation }) {
   return (
@@ -16,16 +15,8 @@ export function WelcomeScreen({ navigation }) {
           <Text style={styles.text}>Welcome to our Cubic Calender App!</Text>
         </View>
         <View style={styles.slide}>
-          <Text style={styles.text}>In this app you can connect your Cube</Text>
-        </View>
-        <View style={styles.slide}>
           <Text style={styles.text}>Connect Your device!</Text>
-          <Pressable
-            style={styles.button}
-            onPress={() => {
-              navigation.navigate('Connect');
-            }}
-          >
+          <Pressable style={styles.button} onPress={() => navigation.navigate('Connect')}>
             <Text style={styles.text}>Connect</Text>
           </Pressable>
         </View>
@@ -53,12 +44,6 @@ const styles = StyleSheet.create({
   text: {
     color: Colors.light.textColorWhite,
   },
-
-  // textSwipe: {
-  //   position: "absolute",
-  //   bottom: 120,
-  //   color: Colors.light.textColorWhite,
-  // },
 
   button: {
     paddingVertical: 12,
