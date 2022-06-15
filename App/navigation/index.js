@@ -1,7 +1,6 @@
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import NewCalendar from '../screens/calendarscreen/Calendar/NewCalendar';
 import CalendarScreen from '../screens/calendarscreen/CalendarScreen';
 import ModelScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
@@ -19,8 +18,7 @@ const Stack = createNativeStackNavigator();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName='NewCal'>
-      <Stack.Screen name="NewCal" component={NewCalendar} />
+    <Stack.Navigator initialRouteName='Calendar'>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen name="Calendar" component={CalendarScreen} />

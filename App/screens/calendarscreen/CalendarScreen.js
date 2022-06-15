@@ -3,48 +3,12 @@ import meetings from "../../components/meetings.json";
 import { StyleSheet, Alert, Modal, Pressable, TextInput } from "react-native";
 import {View, Text} from "../../components/Themed";
 import { Agenda, AgendaList } from "react-native-calendars";
-import { AgendaItem } from "./AgendaItem";
 import DatePicker from "react-datepicker";
 
 export default function CalendarScreen(){
-    const [events, setEvents] = useState({});
-    const [marksDate, setMarksDate] = useState({});
-    const [refreshCalendar, setRefreshCalendar] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
     const [text, onChangeText] = useState("");
-    const [startDate, setStartDate] = useState(new Date());
 
-    const onAddEventSubmit = () => {
-        setRefreshCalendar(true);
-        let meetings = events;
-        let mark = {};
-        let eventDetails = {
-            date: '2022-06-10',
-            title: 'Your Event Title'
-        }
-
-        if (!meetings[eventDetails.date]) {
-            meetings[eventDetails.date] = [];
-        }
-
-        meetings[eventDetails.date].push(eventDetails);
-
-        mark[eventDetails.date] = {
-            customStyles: {
-                container: {
-                    backgroundColor: '#0f0',
-                },
-                text: {
-                    color: 'white',
-                    fontWeight: 'bold',
-                },
-            },
-        };
-
-        setEvents(meetings);
-        setMarksDate(mark);
-        setRefreshCalendar(false);
-    }
   return (
     <View style={styles.container}>
         <Modal animationType="fade" transparent={true} visible={modalVisible} onRequestClose={() => {
@@ -72,7 +36,6 @@ export default function CalendarScreen(){
             <Text style={styles.textStyle}>+</Text>
         </Pressable> 
         <Agenda>
-            
         </Agenda> 
       </View>
     );
