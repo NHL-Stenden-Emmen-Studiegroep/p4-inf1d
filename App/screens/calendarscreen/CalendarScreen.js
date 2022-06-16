@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import meetings from "../../components/meetings.json";
 import { StyleSheet, Alert, Modal, Pressable, TextInput } from "react-native";
 import {View, Text} from "../../components/Themed";
-import { Agenda, AgendaList } from "react-native-calendars";
-import DatePicker from "react-datepicker";
+import { Agenda } from "react-native-calendars";
+import DatePicker from "react-native-modern-datepicker";
 
 export default function CalendarScreen(){
     const [modalVisible, setModalVisible] = useState(false);
-    const [text, onChangeText] = useState("");
+    const [title, setTitle] = useState("");
+    const [location, setLocation] = useState("");
+    const [description, setDescription] = useState("");
+    const [date, setDate] = useState("");
+    const [time, setTime] = useState("");
 
   return (
     <View style={styles.container}>
@@ -18,25 +22,38 @@ export default function CalendarScreen(){
                 <View style={styles.modalView}>
                     <Text style={styles.title}>Add Meeting</Text>
                     <View style={styles.flex}>
-                        <TextInput style={styles.input} onChangeText={onChangeText} placeholder="Title..."></TextInput>
+                        <TextInput style={styles.input} onChangeText={(text) => {setTitle(text)}} placeholder="Title..."></TextInput>
                     </View>
                     <View style={styles.flex}>
-                        <TextInput style={styles.input} onChangeText={onChangeText} placeholder="Location..."></TextInput>
+                        <TextInput style={styles.input} onChangeText={(text) => {setLocation(text)}} placeholder="Location..."></TextInput>
                     </View>
                     <View style={styles.flex}>
-                        <TextInput style={styles.input} onChangeText={onChangeText} placeholder="Description..."></TextInput>
+                        <TextInput style={styles.input} onChangeText={(text) => {setDescription(text)}} placeholder="Description..."></TextInput>
                     </View>
-                    <DatePicker></DatePicker>
-                    <Pressable style={[styles.button, styles.buttonClose]} onPress={() => setModalVisible(!modalVisible)}>
-                        <Text style={styles.textStyle}>Confirm</Text>
+                    <DatePicker onDateChange={(date) => {setDate(date)}} onTimeChange={(time) => {setTime(time)}}></DatePicker>
+                    <Pressable style={[styles.button, styles.buttonClose]} onPress={() => 
+                            {
+                                console.log(title)
+                                console.log(location)
+                                console.log(description)
+                                console.log(date)
+                                console.log(time)
+                                setModalVisible(!modalVisible)
+                            }
+                        }>
+                        <Text style={styles.textStyle} >Confirm</Text>
                     </Pressable>
                 </View>
         </Modal>
         <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => setModalVisible(true)}>
             <Text style={styles.textStyle}>+</Text>
-        </Pressable> 
-        <Agenda>
-        </Agenda> 
+        </Pressable>
+        <Agenda
+        style={styles.modalView}
+        items={{
+            date: [console.log(title), console.log(location), console.log(description), console.log(date), console.log(time)]
+        }}>
+        </Agenda>
       </View>
     );
 }
@@ -60,7 +77,7 @@ const styles = StyleSheet.create({
       margin: 5,
       borderWidth: 0,
       padding: 10,
-      backgroundColor: "#F4F4F4"
+      backgroundColor: "#f4f4f4"
     },
   modalView: {
       display: "flex",

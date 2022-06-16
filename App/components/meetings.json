@@ -1,24 +1,10 @@
 [
     {
-        "date": "2022-05-31",
+        "id": 1,
         "title": "Meeting",
-        "location": "Emmen",
-        "description": "Belangrijke meeting met Joe",
-        "time": {
-            "begin": "hh:mm",
-            "end": "hh:mm"
-        }
-    },
-    {
-        "date": "2022-06-08",
-        "title": "Tandarts",
-        "location": "Emmermeer",
-        "description": "Tandarts a neef"
-    },
-    {
-        "date": "2022-06-13",
-        "title": "Feest",
-        "location": "Tilburg",
-        "description": "Concert van zanger"
+        "location": "Coevorden",
+        "description": "Meeting in Coevorden",
+        "date": "2022/06/16",
+        "time": ""
     }
 ]
