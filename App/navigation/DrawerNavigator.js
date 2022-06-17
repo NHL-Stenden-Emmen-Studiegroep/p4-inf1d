@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from '../screens/HomeScreen';
 import Colors from '../constants/Colors';
 import { ConnectScreen } from '../screens/ConnectScreen';
+import { TimerSettingsScreen } from '../components/Pomodoro/TimerSettings';
 
 const Drawer = createDrawerNavigator();
 
@@ -46,6 +47,13 @@ export function DrawerNavigator() {
         name="Settings"
         component={ConnectScreen}
         options={{ drawerIcon: ({ Color }) => <DrawerIcon name="settings-outline" color={Color} /> }}
+      />
+      <Drawer.Screen
+        name="TimerSettings"
+        component={TimerSettingsScreen}
+        options= {{drawerLabel: () => null,
+        title: null}}
+        nav
       />
     </Drawer.Navigator>
   );

@@ -5,7 +5,7 @@ import { Timer } from 'react-native-stopwatch-timer';
 import { useState } from "react";
 import { Ionicons } from '@expo/vector-icons';
 
-export function TimerScreen({ navigation }) {
+export function TimerScreen({ nav }) {
   const [seconds, setSeconds] = useState(5);
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
@@ -19,7 +19,7 @@ export function TimerScreen({ navigation }) {
     <View style={Styles.container}>
       <View style={Styles.Header}>
         <Text style={Styles.SectionTitle}>Pomodoro Timer</Text>
-        <Pressable onPress={() => navigation.getParent().navigate('Root', {screen:"TimerSettings"})}>
+        <Pressable onPress={() => nav.navigate('TimerSettings', {seconds, minutes,hours})}>
           <Text style={Styles.SettingsButton}>Settings</Text>
         </Pressable>
       </View>
@@ -40,7 +40,6 @@ export function TimerScreen({ navigation }) {
             if (setIsTimerStart(!isTimerStart)) {
               setIsTimerStart(true);
             }
-
             setResetTimer(false);
           }}
         >
