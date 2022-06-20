@@ -19,12 +19,13 @@ export function TimerScreen({ nav }) {
     <View style={Styles.container}>
       <View style={Styles.Header}>
         <Text style={Styles.SectionTitle}>Pomodoro Timer</Text>
-        <Pressable onPress={() => nav.navigate('TimerSettings', {seconds, minutes,hours})}>
+        <Pressable onPress={() => nav.navigate('TimerSettings', { seconds, minutes, hours })}>
           <Text style={Styles.SettingsButton}>Settings</Text>
         </Pressable>
       </View>
       <View style={Styles.TimerContainer}>
         <Timer
+          options={Styles.Timer}
           totalDuration={TimerDuration}
           start={isTimerStart}
           reset={resetTimer}
@@ -44,9 +45,9 @@ export function TimerScreen({ nav }) {
           }}
         >
           {!isTimerStart ? (
-            <Ionicons style={Styles.start} name="play-outline" size={50} />
+            <Ionicons style={Styles.startStop} name="play" color={Colors.light.textColorWhite} size={50} />
           ) : (
-            <Ionicons name="pause-outline" size={50} />
+            <Ionicons style={Styles.startStop} name="pause" color={Colors.light.textColorWhite} size={50} />
           )}
         </Pressable>
         <Pressable
@@ -56,7 +57,7 @@ export function TimerScreen({ nav }) {
             setResetTimer(true);
           }}
         >
-          <Ionicons name="refresh-outline" size={50} />
+          <Ionicons style={Styles.refresh} name="refresh" color={Colors.light.textColorWhite} size={50} />
         </Pressable>
       </View>
     </View>
@@ -88,6 +89,19 @@ const Styles = StyleSheet.create({
   TimerContainer: {
     marginVertical: 30,
   },
+  Timer: {
+    container: {
+      backgroundColor:  Colors.light.textColorWhite,
+      padding: 5,
+      borderRadius: 5,
+      width: 220,
+    },
+    text: {
+      fontSize: 45,
+      color: Colors.light.colorGray800,
+      alignSelf: "center",
+    },
+  },
   TimerButtons: {
     width: '100%',
     flexDirection: 'row',
@@ -101,7 +115,11 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  start: {
+  startStop: {
     paddingLeft: 5,
+  },
+  refresh: {
+    paddingLeft: 4,
+    paddingBottom: 2,
   },
 });

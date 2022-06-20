@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen';
 import Colors from '../constants/Colors';
 import { ConnectScreen } from '../screens/ConnectScreen';
 import { TimerSettingsScreen } from '../components/Pomodoro/TimerSettings';
+import CalendarScreen from '../screens/CalendarScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -30,7 +31,7 @@ export function DrawerNavigator() {
       />
       <Drawer.Screen
         name="Calendar"
-        component={HomeScreen}
+        component={CalendarScreen}
         options={{ drawerIcon: ({ Color }) => <DrawerIcon name="calendar-outline" color={Color} /> }}
       />
       <Drawer.Screen
@@ -52,7 +53,9 @@ export function DrawerNavigator() {
         name="TimerSettings"
         component={TimerSettingsScreen}
         options= {{drawerLabel: () => null,
-        title: null}}
+        title: null,
+        mode: 'modal',
+      }}
         nav
       />
     </Drawer.Navigator>
