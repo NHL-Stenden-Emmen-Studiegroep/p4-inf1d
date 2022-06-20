@@ -4,12 +4,9 @@ import Colors from '../../constants/Colors';
 import { Timer } from 'react-native-stopwatch-timer';
 import { useState } from "react";
 import { Ionicons } from '@expo/vector-icons';
+import {hours, seconds, minutes} from './TimerSettings'
 
 export function TimerScreen({ nav }) {
-  const [seconds, setSeconds] = useState(5);
-  const [minutes, setMinutes] = useState(0);
-  const [hours, setHours] = useState(0);
-
   const [isTimerStart, setIsTimerStart] = useState(false);
   const [resetTimer, setResetTimer] = useState(true);
 
