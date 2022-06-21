@@ -41,6 +41,7 @@ npm manifest:
     "dependencies": {
       "4": "^0.0.0",
       "@expo/vector-icons": "^13.0.0",
+      "@react-native-community/datetimepicker": "6.1.2",
       "@react-navigation/bottom-tabs": "^6.0.5",
       "@react-navigation/drawer": "^6.4.1",
       "@react-navigation/native": "^6.0.10",
@@ -57,6 +58,7 @@ npm manifest:
       "expo-splash-screen": "~0.15.1",
       "expo-status-bar": "~1.3.0",
       "expo-system-ui": "~1.2.0",
+      "expo-updates": "~0.13.2",
       "expo-web-browser": "~10.2.1",
       "fs": "^0.0.1-security",
       "moment": "^2.29.3",
@@ -66,18 +68,24 @@ npm manifest:
       "react-datepicker": "^4.8.0",
       "react-dom": "17.0.2",
       "react-google-calendar-api": "^1.5.2",
+      "react-hook-form": "^7.32.2",
       "react-native": "^0.68.2",
-      "react-native-calendar-strip": "^2.2.6",
+      "react-native-add-calendar-event": "^4.0.0",
+      "react-native-calendar-strip": "^1.4.2",
       "react-native-calendars": "^1.1275.0",
+      "react-native-date-picker": "^4.2.2",
       "react-native-gesture-handler": "~2.2.1",
       "react-native-modal-datetime-picker": "^13.1.2",
       "react-native-modern-datepicker": "^1.0.0-beta.91",
       "react-native-paper": "^4.12.1",
       "react-native-reanimated": "~2.8.0",
-      "react-native-safe-area-context": "4.2.4",
+      "react-native-safe-area-context": "^4.2.4",
       "react-native-screens": "~3.11.1",
+      "react-native-uuid": "^2.0.1",
       "react-native-web": "0.17.7",
-      "react-router-dom": "^6.3.0"
+      "react-router-dom": "^6.3.0",
+      "uuid": "^8.3.2",
+      "watchman": "^1.0.0"
     },
     "devDependencies": {
       "@babel/core": "^7.12.9",
@@ -1269,6 +1277,14 @@ Lockfile:
       uuid "^3.4.0"
       wrap-ansi "^7.0.0"
   
+  "@expo/code-signing-certificates@0.0.1":
+    version "0.0.1"
+    resolved "https://registry.npmjs.org/@expo/code-signing-certificates/-/code-signing-certificates-0.0.1.tgz"
+    integrity sha512-m1AVZGsMgpXRLULQ331AZdxh1D64Qbcb6z7A19JmXUrCQu3591zPn1wjR6J63/Dzi00m5TR5w+9GvqnFY5X//Q==
+    dependencies:
+      node-forge "^1.2.1"
+      nullthrows "^1.1.1"
+  
   "@expo/code-signing-certificates@^0.0.2":
     version "0.0.2"
     resolved "https://registry.npmjs.org/@expo/code-signing-certificates/-/code-signing-certificates-0.0.2.tgz"
@@ -1398,7 +1414,7 @@ Lockfile:
       json5 "^1.0.1"
       write-file-atomic "^2.3.0"
   
-  "@expo/metro-config@0.3.17", "@expo/metro-config@~0.3.16":
+  "@expo/metro-config@0.3.17", "@expo/metro-config@~0.3.16", "@expo/metro-config@~0.3.7":
     version "0.3.17"
     resolved "https://registry.npmjs.org/@expo/metro-config/-/metro-config-0.3.17.tgz"
     integrity sha512-fTLdcYNvU9jqCIn+WXln/XBSINw/l0nGj3P2E1IxsDxOGrz+CZgie1gpreOyH3UXjDruJp9ig0FyYiED/l9hwA==
@@ -2001,6 +2017,13 @@ Lockfile:
       strip-ansi "^5.2.0"
       sudo-prompt "^9.0.0"
       wcwidth "^1.0.1"
+  
+  "@react-native-community/datetimepicker@6.1.2":
+    version "6.1.2"
+    resolved "https://registry.npmjs.org/@react-native-community/datetimepicker/-/datetimepicker-6.1.2.tgz"
+    integrity sha512-4D21x4eywCY2Ex4BI6tQhUEOOKSruz9uPbGK0azGKZap/etoiPtH3nuG56ACtpmUlu5d1R9zzTlumr02dp39hA==
+    dependencies:
+      invariant "^2.2.4"
   
   "@react-native/assets@1.0.0":
     version "1.0.0"
@@ -3428,11 +3451,6 @@ Lockfile:
       browserslist "^4.20.3"
       semver "7.0.0"
   
-  core-js@^1.0.0:
-    version "1.2.7"
-    resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
-    integrity sha512-ZiPp9pZlgxpWRu0M+YWbm6+aQ84XEfH1JRXvfOc/fILWI0VKhLC2LX13X1NYq4fULzLMq7Hfh43CSo2/aIaUPA==
-  
   core-util-is@~1.0.0:
     version "1.0.3"
     resolved "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz"
@@ -3845,13 +3863,6 @@ Lockfile:
     resolved "https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz"
     integrity sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
   
-  encoding@^0.1.11:
-    version "0.1.13"
-    resolved "https://registry.yarnpkg.com/encoding/-/encoding-0.1.13.tgz#56574afdd791f54a8e9b2785c0582a2d26210fa9"
-    integrity sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==
-    dependencies:
-      iconv-lite "^0.6.2"
-  
   end-of-stream@^1.1.0:
     version "1.4.4"
     resolved "https://registry.npmjs.org/end-of-stream/-/end-of-stream-1.4.4.tgz"
@@ -4067,6 +4078,11 @@ Lockfile:
       "@expo/config" "^6.0.14"
       uuid "^3.3.2"
   
+  expo-eas-client@~0.2.0:
+    version "0.2.1"
+    resolved "https://registry.npmjs.org/expo-eas-client/-/expo-eas-client-0.2.1.tgz"
+    integrity sha512-XlZr57iHxqo3+AT2TtcRipMuQEyXnTUAv7H5+KVvj6EEJEAHmwc9wZZdKzqf0MbVRUTOawZsl/b2iYanf+kQsQ==
+  
   expo-error-recovery@~3.1.0:
     version "3.1.0"
     resolved "https://registry.npmjs.org/expo-error-recovery/-/expo-error-recovery-3.1.0.tgz"
@@ -4087,6 +4103,11 @@ Lockfile:
     dependencies:
       fontfaceobserver "^2.1.0"
   
+  expo-json-utils@~0.3.0:
+    version "0.3.0"
+    resolved "https://registry.npmjs.org/expo-json-utils/-/expo-json-utils-0.3.0.tgz"
+    integrity sha512-ceo0pWFJqRAsNjZWX3rVDhy+NDzmrBNFOdvW+HE4EHqlt+OEUu9INIYKO8fU+g3ifI0VcKqHfvvj5wKsSpvPBw==
+  
   expo-keep-awake@~10.1.1:
     version "10.1.1"
     resolved "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-10.1.1.tgz"
@@ -4104,10 +4125,17 @@ Lockfile:
   
   expo-localization@^13.0.0:
     version "13.0.0"
-    resolved "https://registry.yarnpkg.com/expo-localization/-/expo-localization-13.0.0.tgz#f78969151e8db18abc2ebb8fc423b836e21ab918"
+    resolved "https://registry.npmjs.org/expo-localization/-/expo-localization-13.0.0.tgz"
     integrity sha512-SlgHQYaX1D/4d78EQB836Yfx6iuC04pHdMNKoY7pxqEE+hC/X4Mnu0FfhbelfwXTPHFNNFFU1kV6XVF2Mu3dlg==
     dependencies:
       rtl-detect "^1.0.2"
+  
+  expo-manifests@~0.3.0:
+    version "0.3.0"
+    resolved "https://registry.npmjs.org/expo-manifests/-/expo-manifests-0.3.0.tgz"
+    integrity sha512-HegANp+KpZlMX0T2Zb8X7mAVkCThFDq1wjLIjkrSLHhKLczYI2xa/Z5Nk0Tm7qPdGT8NTInCDoOL/nUMtKdNyQ==
+    dependencies:
+      expo-json-utils "~0.3.0"
   
   expo-modules-autolinking@0.8.1:
     version "0.8.1"
@@ -4152,6 +4180,11 @@ Lockfile:
     resolved "https://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.3.0.tgz"
     integrity sha512-UszYUsT8A8jSUebrXht095Iwv5VIdg61LPuyNNoC5gFP0E9G+8LgX68deqR4zhJOlbsgSH2cixxKhrGW+1HPZg==
   
+  expo-structured-headers@~2.2.0:
+    version "2.2.1"
+    resolved "https://registry.npmjs.org/expo-structured-headers/-/expo-structured-headers-2.2.1.tgz"
+    integrity sha512-nY6GuvoS/U5XdhfBNmvXGRoGzIXywXpSZs2wdiP+FbS79P9UWyEqzgARrBTF+6pQxUVMs6/vdffxRpwhjwYPug==
+  
   expo-system-ui@~1.2.0:
     version "1.2.0"
     resolved "https://registry.npmjs.org/expo-system-ui/-/expo-system-ui-1.2.0.tgz"
@@ -4160,6 +4193,29 @@ Lockfile:
       "@expo/config-plugins" "^4.0.14"
       "@react-native/normalize-color" "^2.0.0"
       debug "^4.3.2"
+  
+  expo-updates-interface@~0.6.0:
+    version "0.6.0"
+    resolved "https://registry.npmjs.org/expo-updates-interface/-/expo-updates-interface-0.6.0.tgz"
+    integrity sha512-oQcGTsE8mSkSxENPlWjZPGoJpt3RFDNPuO5d8shBDxBb4ZNH/W2ojavSFQMaLbNMoS0bYQQhzbRNEIBd306QMg==
+  
+  expo-updates@~0.13.2:
+    version "0.13.2"
+    resolved "https://registry.npmjs.org/expo-updates/-/expo-updates-0.13.2.tgz"
+    integrity sha512-2ZthmyxYuN/c71y2oLNz9fdVXLf7ggxAw3Tfy+kwtGOTKNyOf/YoG+SwX7a0v+jZTJnuorEj5FuNf3wrniQ7+w==
+    dependencies:
+      "@expo/code-signing-certificates" "0.0.1"
+      "@expo/config" "^6.0.14"
+      "@expo/config-plugins" "^4.0.14"
+      "@expo/metro-config" "~0.3.7"
+      arg "4.1.0"
+      expo-eas-client "~0.2.0"
+      expo-manifests "~0.3.0"
+      expo-structured-headers "~2.2.0"
+      expo-updates-interface "~0.6.0"
+      fbemitter "^3.0.0"
+      resolve-from "^5.0.0"
+      uuid "^3.4.0"
   
   expo-web-browser@~10.2.1:
     version "10.2.1"
@@ -4276,19 +4332,6 @@ Lockfile:
     version "1.0.2"
     resolved "https://registry.npmjs.org/fbjs-css-vars/-/fbjs-css-vars-1.0.2.tgz"
     integrity sha512-b2XGFAFdWZWg0phtAWLHCk836A1Xann+I+Dgd3Gk64MHKZO44FfoD1KxyvbSh0qZsIoXQGGlVztIY+oitJPpRQ==
-  
-  fbjs@^0.8.9:
-    version "0.8.18"
-    resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.18.tgz#9835e0addb9aca2eff53295cd79ca1cfc7c9662a"
-    integrity sha512-EQaWFK+fEPSoibjNy8IxUtaFOMXcWsY0JaVrQoZR9zC8N2Ygf9iDITPWjUTVIax95b6I742JFLqASHfsag/vKA==
-    dependencies:
-      core-js "^1.0.0"
-      isomorphic-fetch "^2.1.1"
-      loose-envify "^1.0.0"
-      object-assign "^4.1.0"
-      promise "^7.1.1"
-      setimmediate "^1.0.5"
-      ua-parser-js "^0.7.30"
   
   fbjs@^3.0.0:
     version "3.0.4"
@@ -4803,13 +4846,6 @@ Lockfile:
     dependencies:
       safer-buffer ">= 2.1.2 < 3"
   
-  iconv-lite@^0.6.2:
-    version "0.6.3"
-    resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.6.3.tgz#a52f80bf38da1952eb5c681790719871a1a72501"
-    integrity sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==
-    dependencies:
-      safer-buffer ">= 2.1.2 < 3.0.0"
-  
   ieee754@^1.1.13:
     version "1.2.1"
     resolved "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"
@@ -5121,7 +5157,7 @@ Lockfile:
     resolved "https://registry.npmjs.org/is-root/-/is-root-2.1.0.tgz"
     integrity sha512-AGOriNp96vNBd3HtU+RzFEc75FfR5ymiYv8E553I71SCeXBiMsVDUtdio1OEFvrPyLIQ9tVR5RxXIFe5PUFjMg==
   
-  is-stream@^1.0.1, is-stream@^1.1.0:
+  is-stream@^1.1.0:
     version "1.1.0"
     resolved "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz"
     integrity sha1-EtSj3U5o4Lec6428hBc66A2RykQ=
@@ -5186,14 +5222,6 @@ Lockfile:
     version "3.0.1"
     resolved "https://registry.npmjs.org/isobject/-/isobject-3.0.1.tgz"
     integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
-  
-  isomorphic-fetch@^2.1.1:
-    version "2.2.1"
-    resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
-    integrity sha512-9c4TNAKYXM5PRyVcwUZrF3W09nQ+sO7+jydgs4ZGW9dhsLG2VOlISJABombdQqQRXCwuYG3sYV/puGf5rp0qmA==
-    dependencies:
-      node-fetch "^1.0.1"
-      whatwg-fetch ">=0.10.0"
   
   istanbul-lib-coverage@^3.0.0, istanbul-lib-coverage@^3.2.0:
     version "3.2.0"
@@ -6013,7 +6041,7 @@ Lockfile:
     resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz"
     integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
   
-  lodash.debounce@4.0.8, lodash.debounce@^4.0.8:
+  lodash.debounce@^4.0.8:
     version "4.0.8"
     resolved "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz"
     integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
@@ -6684,23 +6712,10 @@ Lockfile:
     dependencies:
       whatwg-url "^5.0.0"
   
-  node-fetch@^1.0.1:
-    version "1.7.3"
-    resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
-    integrity sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==
-    dependencies:
-      encoding "^0.1.11"
-      is-stream "^1.0.1"
-  
   node-forge@^1.2.1, node-forge@^1.3.1:
     version "1.3.1"
     resolved "https://registry.npmjs.org/node-forge/-/node-forge-1.3.1.tgz"
     integrity sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==
-  
-  node-git-hooks@^1.0.1:
-    version "1.0.6"
-    resolved "https://registry.yarnpkg.com/node-git-hooks/-/node-git-hooks-1.0.6.tgz#9c7a18a8c8622c280f1e5049e3e83d32bc29d2ea"
-    integrity sha512-ZTiTpRm16kxZY3JQugqjtm1u6nRt0cF2IH8lTMbiyv1V0qUA6ao8yHBwu4p58s3Ry+DbrlXOgUR4b4o/KzjWAA==
   
   node-int64@^0.4.0:
     version "0.4.0"
@@ -7273,13 +7288,6 @@ Lockfile:
       object-assign "^4.1.1"
       react-is "^16.13.1"
   
-  prop-types@15.5.8:
-    version "15.5.8"
-    resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
-    integrity sha512-QiDx7s0lWoAVxmEmOYnn3rIZGduup2PZgj3rta5O5y0NfPKu3ApWi+GdMfTto7PmO/5+p4yamSLMZkj0jaTL4A==
-    dependencies:
-      fbjs "^0.8.9"
-  
   psl@^1.1.33:
     version "1.8.0"
     resolved "https://registry.npmjs.org/psl/-/psl-1.8.0.tgz"
@@ -7442,6 +7450,11 @@ Lockfile:
     dependencies:
       "@types/node" "^9.6.39"
   
+  react-hook-form@^7.32.2:
+    version "7.32.2"
+    resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.32.2.tgz"
+    integrity sha512-F1A6n762xaRhvtQH5SkQQhMr19cCkHZYesTcKJJeNmrphiZp/cYFTIzC05FnQry0SspM54oPJ9tXFXlzya8VNQ==
+  
   "react-is@^16.12.0 || ^17.0.0", react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0:
     version "16.13.1"
     resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -7452,20 +7465,29 @@ Lockfile:
     resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
     integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
   
+  react-lifecycles-compat@^2.0.0:
+    version "2.0.2"
+    resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-2.0.2.tgz"
+    integrity sha512-BPksUj7VMAAFhcCw79sZA0Ow/LTAEjs3Sio1AQcuwLeOP+ua0f/08Su2wyiW+JjDDH6fRqNy3h5CLXh21u1mVg==
+  
   react-lifecycles-compat@^3.0.4:
     version "3.0.4"
     resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
     integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
   
-  react-native-calendar-strip@^2.2.6:
-    version "2.2.6"
-    resolved "https://registry.yarnpkg.com/react-native-calendar-strip/-/react-native-calendar-strip-2.2.6.tgz#bafbf7cc67b42b534388b70828f4ea85fb32e0a9"
-    integrity sha512-VYSgv59W3o5wQsZOIfC5mi9vv7afgAaT9+PjJEs6CfnuLFjopSl395+1dkm4oR7Cm4JZap4WxxVlywzge1EDVA==
+  react-native-add-calendar-event@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.npmjs.org/react-native-add-calendar-event/-/react-native-add-calendar-event-4.0.0.tgz"
+    integrity sha512-gkqidtFquTKR46QWdV12iu86OQJGNTnsT1C58EBPFy1MyCFJZar6y6wRBLaWNfvnhgeGzJeA0ODb8KmD+HU8GQ==
+  
+  react-native-calendar-strip@^1.4.2:
+    version "1.4.2"
+    resolved "https://registry.npmjs.org/react-native-calendar-strip/-/react-native-calendar-strip-1.4.2.tgz"
+    integrity sha512-e4E5WERaALx05MmFY202hDTbgfdAO3cAYMU3nAoDYlTfNZ7FWKZM2ayWNdKa+us9HCXbGVZPMFz327Qdyyp6pw==
     dependencies:
       moment ">=2.0.0"
-      node-git-hooks "^1.0.1"
       prop-types "^15.6.0"
-      recyclerlistview "^3.0.0"
+      react-lifecycles-compat "^2.0.0"
   
   react-native-calendars@^1.1275.0:
     version "1.1275.0"
@@ -7492,6 +7514,11 @@ Lockfile:
       jscodeshift "^0.13.1"
       nullthrows "^1.1.1"
   
+  react-native-date-picker@^4.2.2:
+    version "4.2.2"
+    resolved "https://registry.npmjs.org/react-native-date-picker/-/react-native-date-picker-4.2.2.tgz"
+    integrity sha512-x0jxWbJXKDXivRDwsUx58tKOxe719XoVqqq6UzMSYSsTiPL2i13r7PyDxop3f3et/62qbcMgeswl+/CLdX6+Eg==
+  
   react-native-gesture-handler@~2.2.1:
     version "2.2.1"
     resolved "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.2.1.tgz"
@@ -7515,7 +7542,7 @@ Lockfile:
   
   react-native-modal-datetime-picker@^13.1.2:
     version "13.1.2"
-    resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-13.1.2.tgz#7c8bd3402acb4dcfbca49c926a7f18dd108c69c4"
+    resolved "https://registry.npmjs.org/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-13.1.2.tgz"
     integrity sha512-PZDkuY7HayRX1KE2X2dm29CvCLzwj/vn6B6QdPbjZea/GEKvHBMOLGdhFCcA9+gD64Y41+VqfytUh2fdvUvQ1g==
     dependencies:
       prop-types "^15.7.2"
@@ -7550,7 +7577,7 @@ Lockfile:
       setimmediate "^1.0.5"
       string-hash-64 "^1.0.3"
   
-  react-native-safe-area-context@4.2.4:
+  react-native-safe-area-context@^4.2.4:
     version "4.2.4"
     resolved "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-4.2.4.tgz"
     integrity sha512-OOX+W2G4YYufvryonn6Kw6YnyT8ZThkxPHZBD04NLHaZmicUaaDVII/PZ3M5fD1o5N62+T+8K4bCS5Un2ggvkA==
@@ -7584,6 +7611,11 @@ Lockfile:
     version "1.0.5"
     resolved "https://registry.npmjs.org/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz"
     integrity sha512-Ns7Bn9H/Tyw278+5SQx9oAblDZ7JixyzeOczcBK8dipQk2pD7Djkcfnf1nB/8RErAmMLL9iXgW0QHqiII8AhKw==
+  
+  react-native-uuid@^2.0.1:
+    version "2.0.1"
+    resolved "https://registry.npmjs.org/react-native-uuid/-/react-native-uuid-2.0.1.tgz"
+    integrity sha512-cptnoIbL53GTCrWlb/+jrDC6tvb7ypIyzbXNJcpR3Vab0mkeaaVd5qnB3f0whXYzS+SMoSQLcUUB0gEWqkPC0g==
   
   react-native-web@0.17.7:
     version "0.17.7"
@@ -7764,15 +7796,6 @@ Lockfile:
       esprima "~4.0.0"
       source-map "~0.6.1"
       tslib "^2.0.1"
-  
-  recyclerlistview@^3.0.0:
-    version "3.0.5"
-    resolved "https://registry.yarnpkg.com/recyclerlistview/-/recyclerlistview-3.0.5.tgz#50bf5bcaa401d56bb6bb264354083f4d424408eb"
-    integrity sha512-JVHz13u520faEsbVqFrJOMuJjc4mJlOXODe5QdqAJHdl5/IpyYeo83uiHrpzxyLb8QtJ0889JMlDik+Z1Ed0QQ==
-    dependencies:
-      lodash.debounce "4.0.8"
-      prop-types "15.5.8"
-      ts-object-utils "0.0.5"
   
   regenerate-unicode-properties@^10.0.1:
     version "10.0.1"
@@ -8020,7 +8043,7 @@ Lockfile:
     dependencies:
       ret "~0.1.10"
   
-  "safer-buffer@>= 2.1.2 < 3", "safer-buffer@>= 2.1.2 < 3.0.0":
+  "safer-buffer@>= 2.1.2 < 3":
     version "2.1.2"
     resolved "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
     integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
@@ -8806,11 +8829,6 @@ Lockfile:
     resolved "https://registry.npmjs.org/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz"
     integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
   
-  ts-object-utils@0.0.5:
-    version "0.0.5"
-    resolved "https://registry.yarnpkg.com/ts-object-utils/-/ts-object-utils-0.0.5.tgz#95361cdecd7e52167cfc5e634c76345e90a26077"
-    integrity sha1-lTYc3s1+UhZ8/F5jTHY0XpCiYHc=
-  
   tslib@^1.10.0:
     version "1.14.1"
     resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
@@ -9127,6 +9145,11 @@ Lockfile:
     dependencies:
       loose-envify "^1.0.0"
   
+  watchman@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.npmjs.org/watchman/-/watchman-1.0.0.tgz"
+    integrity sha512-f7sP6DSVQzNUAXIBctvYyJyq6/j/FtWoEn6yh/Ot/E14a3am7JMH0tygWt6iE+T+DT+BNOUAT3hM/gZ7W9Ycmw==
+  
   wcwidth@^1.0.1:
     version "1.0.1"
     resolved "https://registry.npmjs.org/wcwidth/-/wcwidth-1.0.1.tgz"
@@ -9156,7 +9179,7 @@ Lockfile:
     dependencies:
       iconv-lite "0.4.24"
   
-  whatwg-fetch@>=0.10.0, whatwg-fetch@^3.0.0:
+  whatwg-fetch@^3.0.0:
     version "3.6.2"
     resolved "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz"
     integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==

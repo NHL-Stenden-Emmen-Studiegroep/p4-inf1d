@@ -4,7 +4,7 @@
         "title": "Meeting",
         "location": "Coevorden",
         "description": "Meeting in Coevorden",
-        "date": "2022/06/16",
-        "time": ""
+        "selectedDate": "2022-06-16",
+        "selectedTime": "11:00"
     }
 ]

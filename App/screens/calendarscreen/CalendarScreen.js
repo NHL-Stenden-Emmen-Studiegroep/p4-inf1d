@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import meetings from "../../components/meetings.json";
+import * as data from "../../components/meetings.json";
 import { StyleSheet, Alert, Modal, Pressable, TextInput } from "react-native";
 import {View, Text} from "../../components/Themed";
 import { Agenda } from "react-native-calendars";
@@ -10,9 +10,13 @@ export default function CalendarScreen(){
     const [title, setTitle] = useState("");
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
-    const [date, setDate] = useState("");
-    const [time, setTime] = useState("");
-
+    const [selectedDate, setSelectedDate] = useState("");
+    const [selectedTime, setSelectedTime] = useState("");
+    const dataTitle = data.title;
+    const dataLocation = data.location;
+    const dataDescription = data.description;
+    const dataDate = data.date;
+    const dataTime = data.time;
   return (
     <View style={styles.container}>
         <Modal animationType="fade" transparent={true} visible={modalVisible} onRequestClose={() => {
@@ -30,18 +34,18 @@ export default function CalendarScreen(){
                     <View style={styles.flex}>
                         <TextInput style={styles.input} onChangeText={(text) => {setDescription(text)}} placeholder="Description..."></TextInput>
                     </View>
-                    <DatePicker onDateChange={(date) => {setDate(date)}} onTimeChange={(time) => {setTime(time)}}></DatePicker>
+                    <DatePicker onDateChange={(date) => {setSelectedDate(date)}} onTimeChange={(time) => {setSelectedTime(time)}} minuteInterval={1} ></DatePicker>
                     <Pressable style={[styles.button, styles.buttonClose]} onPress={() => 
                             {
                                 console.log(title)
                                 console.log(location)
                                 console.log(description)
-                                console.log(date)
-                                console.log(time)
+                                console.log(selectedDate)
+                                console.log(selectedTime)
                                 setModalVisible(!modalVisible)
                             }
                         }>
-                        <Text style={styles.textStyle} >Confirm</Text>
+                        <Text style={styles.textStyle}>Confirm</Text>
                     </Pressable>
                 </View>
         </Modal>
@@ -49,10 +53,18 @@ export default function CalendarScreen(){
             <Text style={styles.textStyle}>+</Text>
         </Pressable>
         <Agenda
-        style={styles.modalView}
         items={{
-            date: [console.log(title), console.log(location), console.log(description), console.log(date), console.log(time)]
-        }}>
+            "2022-06-20": []
+        }}
+        renderItem={() => {
+            return <View style={styles.modalView} key={dataDate}>
+                <Text style={styles.title}>{dataTitle}</Text>
+                <Text>{dataLocation}</Text>
+                <Text>{dataDescription}</Text>
+                <Text>{dataTime}</Text>
+            </View>
+        }}
+        >
         </Agenda>
       </View>
     );
