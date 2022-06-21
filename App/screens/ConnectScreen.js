@@ -6,10 +6,12 @@ import Colors from '../constants/Colors';
 import { StateContext } from '../components/StateContext';
 import { useStorage } from '../hooks/useStorage';
 import { validateIp } from '../constants/Regex';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 export function ConnectScreen({ navigation }) {
   const [_, writeItemToStorage] = useStorage('@storage_quickstart');
   const [__, setHardwareIp] = useContext(StateContext);
+  const { getItem: getStorageIp, setItem: setStorageIp } = useAsyncStorage('@storage_ip');
 
   const [error, setError] = useState(false);
   const [userInput, setUserInput] = useState('192.168.2.1');
@@ -35,8 +37,13 @@ export function ConnectScreen({ navigation }) {
           onPress={() => {
             if (validateIp(userInput)) {
               setHardwareIp(userInput);
+              setStorageIp(userInput);
               writeItemToStorage('false');
-              navigation.navigate('Root');
+
+              setError(false);
+              setUserInput('192.168.2.1');
+
+              navigation.navigate('Root', { screen: 'Home' });
             } else {
               setError(true);
             }

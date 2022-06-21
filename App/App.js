@@ -18,7 +18,7 @@ export default function App() {
     return null;
   } else {
     return (
-      <StateProvider value={null}>
+      <StateProvider>
         <SafeAreaProvider>
           <StatusBar />
           <Navigation colorScheme={colorScheme} />
