@@ -20,7 +20,6 @@ export function TimerScreen({ nav, timer }) {
 
   useEffect(() => {
     setTimerDuration(((hours * 60 + minutes) * 60 + seconds) * 1000);
-    console.log("Effect has ran");
   }, [seconds, minutes, hours]);
 
 

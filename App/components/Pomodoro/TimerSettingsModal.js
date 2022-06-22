@@ -76,7 +76,6 @@ export function TimerSettingsModal({modalVisible, setModalVisible, timerConfig})
                 style={[Styles.Button, Styles.ButtonConfirm]}
                 onPress={() => {
                   setModalVisible(false);
-                  console.log(localHours.id, localMinutes.id, localSeconds.id)
                   if(localHours.id !== undefined) {
                     setHours(localHours.id)
                   } else {
