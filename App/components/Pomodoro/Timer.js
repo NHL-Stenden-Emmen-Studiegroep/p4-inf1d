@@ -1,22 +1,37 @@
-import { View, Text } from "../Themed";
+import { useState, useEffect } from "react";
 import { StyleSheet, Pressable } from "react-native";
-import Colors from '../../constants/Colors';
-import { Timer } from 'react-native-stopwatch-timer';
-import { useState } from "react";
 import { Ionicons } from '@expo/vector-icons';
-import {hours, seconds, minutes} from './TimerSettings'
+import { Timer } from 'react-native-stopwatch-timer';
 
-export function TimerScreen({ nav }) {
+import { View, Text } from "../Themed";
+import Colors from '../../constants/Colors';
+import { TimerSettingsModal } from "./TimerSettingsModal";
+
+export function TimerScreen({ nav, timer }) {
   const [isTimerStart, setIsTimerStart] = useState(false);
   const [resetTimer, setResetTimer] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const TimerDuration = ((hours * 60 + minutes) * 60 + seconds) * 1000;
+  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(25);
+  const [hours, setHours] = useState(0);
+  const [TimerDuration, setTimerDuration] = useState()
+
+
+  useEffect(() => {
+    setTimerDuration(((hours * 60 + minutes) * 60 + seconds) * 1000);
+    console.log("Effect has ran");
+  }, [seconds, minutes, hours]);
+
+
 
   return (
     <View style={Styles.container}>
+      <TimerSettingsModal modalVisible={modalVisible} setModalVisible={setModalVisible} timerConfig={{seconds, setSeconds, minutes, setMinutes, hours, setHours}}/>
       <View style={Styles.Header}>
         <Text style={Styles.SectionTitle}>Pomodoro Timer</Text>
-        <Pressable onPress={() => nav.navigate('TimerSettings', { seconds, minutes, hours })}>
+        {/* <Pressable onPress={() => nav.navigate('TimerSettings')}> */}
+        <Pressable onPress={() => setModalVisible(true)}>
           <Text style={Styles.SettingsButton}>Settings</Text>
         </Pressable>
       </View>
