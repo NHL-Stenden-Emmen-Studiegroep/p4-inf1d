@@ -49,15 +49,6 @@ export function DrawerNavigator() {
         component={ConnectScreen}
         options={{ drawerIcon: ({ Color }) => <DrawerIcon name="settings-outline" color={Color} /> }}
       />
-      <Drawer.Screen
-        name="TimerSettings"
-        component={TimerSettingsScreen}
-        options= {{drawerLabel: () => null,
-        title: null,
-        mode: 'modal',
-      }}
-        nav
-      />
     </Drawer.Navigator>
   );
 }
