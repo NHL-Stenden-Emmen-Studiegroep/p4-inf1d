@@ -1,5 +1,6 @@
 import json
 import math
+import asyncio
 from typing import Optional
 from fastapi import FastAPI, status, Response, HTTPException
 
@@ -19,7 +20,7 @@ def main():
 
 
 @app.get("/logs")
-def getLog(date: Optional[str] = None):
+def getlog(date: Optional[str] = None):
     logs = Log()
     return logs.getLogs(date)
 
@@ -66,64 +67,12 @@ def calendar(date: str,
     return JSON
 
 
-@app.get("/timer/{state}", status_code=200)
-def timer(state: TimerStates, response: Response, time: int = 0, pause: bool = False) -> ReturnJSON:
-    # check if state is OFF
-    if state == TimerStates.OFF:
-
-        # Check if pause is True
-        if pause:
-            alert(f"Timer is uitgezet, het is nu tijd voor pauze")
-            Log(f"Timer is set to {state}")
-            return ReturnJSON(
-                detail=DetailJSON(
-                    message="Timer turned off.",
-                    type=status.HTTP_200_OK
-                )
-            )
-
-        # Check if time is greater than 0
-        if time > 0:
-
-            minutes = math.floor(time / 60)
-            seconds = math.floor(time % 60)
-            alert(f"Timer is uitgezet, er zijn nog {minutes} minuten en {seconds} seconden over")
-            Log(f"Timer is set to {state} with {minutes} minutes and {seconds} seconds remaining")
-            return ReturnJSON(
-                detail=DetailJSON(
-                    message=f"Timer turned off. Available time is {minutes} minutes and {seconds} seconds.",
-                    type=status.HTTP_200_OK
-                )
-            )
-
-        # Else if timer is 0
-        elif time == 0:
-            alert(f"Timer is uitgezet.")
-            Log(f"Timer is set to {state}")
-            return ReturnJSON(
-                detail=DetailJSON(
-                    message="Timer turned off.",
-                    type=status.HTTP_200_OK
-                )
-            )
-
-        # Else send a fail message
-        else:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail={
-                    "msg": "Timer can't be less than 0",
-                    "type": status.HTTP_400_BAD_REQUEST
-                }
-            )
-
-    # Timer is ON
-    else:
-        alert("Timer is gestart")
-        Log(f"Timer is set to {state}")
-        return ReturnJSON(
-            detail=DetailJSON(
-                message="Timer turned on.",
-                type=status.HTTP_200_OK
-            )
-        )
+@app.post("/timer/{ms}")
+async def timer(ms: int):
+    t = ms
+    while t:
+        await asyncio.sleep(1)
+        t -= 1000
+    tts = TTS("Je timer is voorbij")
+    tts.play()
+    return
