@@ -13,6 +13,7 @@ app = FastAPI()
 
 Log().cleanFile()
 
+is_timer_running = 0
 
 @app.get("/")
 def main():
@@ -68,11 +69,24 @@ def calendar(date: str,
 
 
 @app.post("/timer/{ms}")
-async def timer(ms: int):
+async def timer(cmd: str, ms: int):
+    global is_timer_running
     t = ms
-    while t:
+    is_timer_running = 0
+    is_timer_running = 1
+    while t and is_timer_running:
         await asyncio.sleep(1)
         t -= 1000
-    tts = TTS("Je timer is voorbij")
+    if is_timer_running:
+        tts = TTS("je timer is voorbij")
+        tts.play()
+    is_timer_running = 0
+    return
+
+@app.post("/timer/abort")
+async def stop_timer():
+    is_timer_running = 0
+    tts = TTS("je timer is gestopt")
     tts.play()
     return
+
