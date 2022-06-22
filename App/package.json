@@ -12,6 +12,7 @@
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@react-native-async-storage/async-storage": "~1.17.3",
+    "@react-native-picker/picker": "^2.4.1",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/drawer": "^6.4.1",
     "@react-navigation/native": "^6.0.10",
@@ -34,17 +35,23 @@
     "react-google-calendar-api": "^1.5.2",
     "react-hook-form": "^7.31.3",
     "react-native": "0.68.2",
+    "react-native-24h-timepicker": "^1.1.0",
     "react-native-app-intro-slider": "^4.0.4",
     "react-native-calendars": "^1.1275.0",
+    "react-native-dropdown-menu": "^2.0.0",
     "react-native-gesture-handler": "~2.2.1",
+    "react-native-multi-selectbox": "^1.5.0",
     "react-native-network-info": "^5.2.1",
     "react-native-reanimated": "~2.8.0",
     "react-native-safe-area-context": "4.2.4",
     "react-native-screens": "~3.11.1",
+    "react-native-stopwatch-timer": "^0.0.21",
     "react-native-swipe": "^1.0.0",
     "react-native-swiper": "^1.6.0-rc.3",
     "react-native-web": "0.17.7",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "react-select": "^5.3.2",
+    "react-select-native": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
