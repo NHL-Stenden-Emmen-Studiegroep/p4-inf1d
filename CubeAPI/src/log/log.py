@@ -50,20 +50,21 @@ class Log:
 
     def cleanFile(self):
         res = self.getLogs()
-        today = datetime.date.today()
-        lastMonth = today - datetime.timedelta(weeks=4)
-        filter_dict: dict[datetime, str] = {}
-        for date in res.keys():
-            split_date = date[:10].split("-")
-            date_of_res_key = datetime.date(int(split_date[0]), int(split_date[1]), int(split_date[2]))
-            if lastMonth < date_of_res_key:
-                filter_dict[date] = res[date]
-                # print(filter_dict[date])
+        if res is dict[datetime, str]:
+            today = datetime.date.today()
+            lastMonth = today - datetime.timedelta(weeks=4)
+            filter_dict: dict[datetime, str] = {}
+            for date in res.keys():
+                split_date = date[:10].split("-")
+                date_of_res_key = datetime.date(int(split_date[0]), int(split_date[1]), int(split_date[2]))
+                if lastMonth < date_of_res_key:
+                    filter_dict[date] = res[date]
+                    # print(filter_dict[date])
 
-        f = open(self.file, "w")
-        for date, msg in filter_dict.items():
-            f.write(f"{date}: {msg}\n")
-        f.close()
+            f = open(self.file, "w")
+            for date, msg in filter_dict.items():
+                f.write(f"{date}: {msg}\n")
+            f.close()
 
 
 # def log(logType: int, text: str):

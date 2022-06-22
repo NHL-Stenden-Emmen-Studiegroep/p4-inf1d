@@ -18,5 +18,5 @@ class TTS:
         Log(f"Created TTS -> {self.text}")
 
     def play(self):
-        print(os.system(self.cmd))
+        os.system(self.cmd)
         Log(f"Played TTS -> {self.text}")

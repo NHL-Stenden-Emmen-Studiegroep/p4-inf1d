@@ -1,0 +1,28 @@
+2022-06-14 14:53:13.162220: Created TTS -> test 
+2022-06-14 14:53:14.630860: Created TTS -> test 
+2022-06-14 14:53:15.827498: Played TTS -> test 
+2022-06-17 12:50:52.104509: Created TTS -> Timer is gestart 
+2022-06-17 12:54:42.528904: Created TTS -> Timer is gestart 
+2022-06-17 12:54:42.905085: Played TTS -> Timer is gestart 
+2022-06-17 13:01:16.005731: Created TTS -> Timer is uitgezet, er zijn nog 2.0 minuten en 0 secondes over 
+2022-06-17 13:01:16.375481: Played TTS -> Timer is uitgezet, er zijn nog 2.0 minuten en 0 secondes over 
+2022-06-17 13:03:52.564992: Created TTS -> Timer is uitgezet, er zijn nog 2 minuten en 0 secondes over 
+2022-06-17 13:03:52.929994: Played TTS -> Timer is uitgezet, er zijn nog 2 minuten en 0 secondes over 
+2022-06-17 13:04:02.544763: Created TTS -> Timer is uitgezet, er zijn nog 2 minuten en 8 secondes over 
+2022-06-17 13:04:02.655004: Played TTS -> Timer is uitgezet, er zijn nog 2 minuten en 8 secondes over 
+2022-06-17 13:04:23.833940: Created TTS -> Timer is uitgezet, er zijn nog 14 minuten en 2 seconden over 
+2022-06-17 13:04:23.952440: Played TTS -> Timer is uitgezet, er zijn nog 14 minuten en 2 seconden over 
+2022-06-17 13:05:12.324425: Created TTS -> Timer is uitgezet, er zijn nog 14 minuten en 2 seconden over 
+2022-06-17 13:05:12.444516: Played TTS -> Timer is uitgezet, er zijn nog 14 minuten en 2 seconden over 
+2022-06-21 10:24:19.393288: Created TTS -> Timer is gestart 
+2022-06-21 10:24:19.512479: Played TTS -> Timer is gestart 
+2022-06-21 10:24:19.512978: Timer is set to on 
+2022-06-21 10:46:05.052946: Created TTS -> Timer is gestart 
+2022-06-21 10:46:05.160822: Played TTS -> Timer is gestart 
+2022-06-21 10:46:05.161334: Timer is set to on 
+2022-06-21 11:24:27.198640: Created TTS -> De batterij is 100% 
+2022-06-21 11:24:27.294140: Played TTS -> De batterij is 100% 
+2022-06-21 11:24:57.648639: Created TTS -> De batterij is 100% 
+2022-06-21 11:24:57.993413: Played TTS -> De batterij is 100% 
+2022-06-21 11:25:24.712342: Created TTS -> De batterij is 100% 
+2022-06-21 11:25:25.058851: Played TTS -> De batterij is 100% 

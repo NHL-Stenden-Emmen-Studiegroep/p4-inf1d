@@ -1,7 +1,7 @@
-from src.tts.TTS import tts
-from src.log.log import log
+from src.tts.TTS import TTS
+from src.log.log import Log
 
 
 async def alert(text: str):
-    await tts(text)
-    return log(0, text)
+    await TTS(text)
+    return Log(0, text)
