@@ -15,31 +15,37 @@ export function ConnectScreen({ navigation }) {
   const { getItem: getStorageIp, setItem: setStorageIp } = useAsyncStorage('@storage_ip');
 
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [userInput, setUserInput] = useState('192.168.2.1');
 
   const handleSubmit = () => {
     if (validateIp(userInput)) {
+      console.log('Press');
+      setLoading(true);
+      setError(false);
+
       axios({ method: 'get', url: `http://` + userInput + `:8000/` })
         .then((res) => {
-          console.log(res);
           if (res.status === 200) {
             setHardwareIp(userInput);
             setStorageIp(userInput);
             writeItemToStorage('false');
-
             setError(null);
             setUserInput('192.168.2.1');
+            setLoading(false);
 
             navigation.navigate('Root', { screen: 'Home' });
           } else {
+            setLoading(false);
             setError('Er ging iets fout probeer het opnieuw');
           }
         })
         .catch((rej) => {
-          console.error(rej);
-          setError('Er kan geen verbinding worden gemaakt met de cubes.');
+          setLoading(false);
+          setError('Er kan geen verbinding worden gemaakt met de cube.');
         });
     } else {
+      setLoading(false);
       setError('Het ingevoerde ip is niet geldig');
     }
   };
@@ -53,15 +59,19 @@ export function ConnectScreen({ navigation }) {
           {error && <Text style={styles.textError}>{error}</Text>}
         </View>
         <View style={styles.flex}>
-          <TextInput
-            style={styles.input}
-            onChangeText={(value) => setUserInput(value)}
-            keyboardType={'default'}
-            placeholder={userInput}
-          />
+          {loading === true ? (
+            <Text style={styles.text}>Loading...</Text>
+          ) : (
+            <TextInput
+              style={styles.input}
+              onChangeText={(value) => setUserInput(value)}
+              keyboardType={'default'}
+              placeholder={userInput}
+            />
+          )}
         </View>
-        <Pressable style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.text}>Submit</Text>
+        <Pressable style={styles.button} disabled={loading} onPress={handleSubmit}>
+          <Text style={styles.text}>Connect</Text>
         </Pressable>
       </View>
     </>
