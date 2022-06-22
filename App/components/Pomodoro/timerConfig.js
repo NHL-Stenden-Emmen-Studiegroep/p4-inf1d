@@ -1,5 +1,6 @@
 // item is the text that the users sees.
 // id is the value we care about.
+// spaces are added so you can click on the full lenght of the dropdownmenu instead of just the number.
 
 export const ListOfHours = [
   { item: '0                                                                          ', id: 0 },
