@@ -7,14 +7,42 @@ import { StateContext } from '../components/StateContext';
 import { useStorage } from '../hooks/useStorage';
 import { validateIp } from '../constants/Regex';
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 export function ConnectScreen({ navigation }) {
   const [_, writeItemToStorage] = useStorage('@storage_quickstart');
   const [__, setHardwareIp] = useContext(StateContext);
   const { getItem: getStorageIp, setItem: setStorageIp } = useAsyncStorage('@storage_ip');
 
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [userInput, setUserInput] = useState('192.168.2.1');
+
+  const handleSubmit = () => {
+    if (validateIp(userInput)) {
+      axios({ method: 'get', url: `http://` + userInput + `:8000/` })
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            setHardwareIp(userInput);
+            setStorageIp(userInput);
+            writeItemToStorage('false');
+
+            setError(null);
+            setUserInput('192.168.2.1');
+
+            navigation.navigate('Root', { screen: 'Home' });
+          } else {
+            setError('Er ging iets fout probeer het opnieuw');
+          }
+        })
+        .catch((rej) => {
+          console.error(rej);
+          setError('Er kan geen verbinding worden gemaakt met de cubes.');
+        });
+    } else {
+      setError('Het ingevoerde ip is niet geldig');
+    }
+  };
 
   return (
     <>
@@ -22,7 +50,7 @@ export function ConnectScreen({ navigation }) {
       <View style={styles.container}>
         <View style={styles.flex}>
           <Text style={styles.text}>Voer hier de IP address in</Text>
-          {error && <Text style={styles.textError}>Het ingevoerde ip is niet geldig</Text>}
+          {error && <Text style={styles.textError}>{error}</Text>}
         </View>
         <View style={styles.flex}>
           <TextInput
@@ -32,23 +60,7 @@ export function ConnectScreen({ navigation }) {
             placeholder={userInput}
           />
         </View>
-        <Pressable
-          style={styles.button}
-          onPress={() => {
-            if (validateIp(userInput)) {
-              setHardwareIp(userInput);
-              setStorageIp(userInput);
-              writeItemToStorage('false');
-
-              setError(false);
-              setUserInput('192.168.2.1');
-
-              navigation.navigate('Root', { screen: 'Home' });
-            } else {
-              setError(true);
-            }
-          }}
-        >
+        <Pressable style={styles.button} onPress={handleSubmit}>
           <Text style={styles.text}>Submit</Text>
         </Pressable>
       </View>
@@ -68,6 +80,7 @@ const styles = StyleSheet.create({
 
   flex: {
     display: 'flex',
+    alignItems: 'center',
   },
 
   container: {
