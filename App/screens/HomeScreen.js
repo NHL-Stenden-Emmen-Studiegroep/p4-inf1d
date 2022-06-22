@@ -1,8 +1,9 @@
+import { useContext } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { TimerScreen } from '../components/Pomodoro/Timer';
 
-export default function HomeScreen({navigation}) {
+export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}></Text>
@@ -10,7 +11,7 @@ export default function HomeScreen({navigation}) {
       <TimerScreen nav={navigation} />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

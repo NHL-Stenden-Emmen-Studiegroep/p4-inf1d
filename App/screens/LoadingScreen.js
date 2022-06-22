@@ -1,25 +1,31 @@
-import { useEffect, useCallback } from "react";
-import { Text, View } from "../components/Themed";
+import { useEffect, useCallback, useContext } from 'react';
+import { Text, View } from '../components/Themed';
 import { StyleSheet } from 'react-native';
 import { Logo } from '../components/Logo';
 import Colors from '../constants/Colors';
 import Background from '../components/Background';
 import { version as appVersion } from '../package.json';
 import { useStorage } from '../hooks/useStorage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { validateIp } from '../constants/Regex';
+import { StateContext } from '../components/StateContext';
 
 export function LoadingScreen({ navigation }) {
-  const [readItemFromStorage, writeItemToStorage] = useStorage('@storage_quickstart');
+  const [readItemFromStorage] = useStorage('@storage_quickstart');
+  const [hardwareIp, setHardwareIp] = useContext(StateContext);
 
   const checkState = useCallback(async () => {
     readItemFromStorage().then((item) => {
       setTimeout(() => {
         if (item === 'true' || item === null) {
-          writeItemToStorage('false');
           navigation.navigate('Welcome');
         } else {
-          navigation.navigate('Root');
+          AsyncStorage.getItem('@storage_ip', (_, result) => {
+            if (validateIp(result)) setHardwareIp(result);
+            navigation.navigate('Root');
+          });
         }
-      }, 1000);
+      }, 2000);
     });
   }, []);
 
