@@ -50,7 +50,7 @@ def calendar(date: str,
              time_begin: str,
              time_end: str):
 
-    JSON = json.dumps(
+    stmt = json.dumps(
         {
             "date": date,
             "title": title,
@@ -65,7 +65,7 @@ def calendar(date: str,
 
     # meeting = Meeting(JSON)
     # return Calendar.add(meeting)
-    return JSON
+    return stmt
 
 
 @app.post("/timer/{ms}")
