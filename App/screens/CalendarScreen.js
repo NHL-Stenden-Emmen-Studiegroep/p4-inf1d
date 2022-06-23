@@ -7,8 +7,6 @@ import moment from 'moment';
 
 import { Text, View } from '../components/Themed';
 
-import Data from '../resources/meetings.json';
-
 export default function CalendarScreen() {
   const [calendarItems, setCalendarItems] = useState({});
 
@@ -23,6 +21,7 @@ export default function CalendarScreen() {
 
   useEffect(() => {
     setStartTime('00:00');
+
     console.log('rerender has occured....');
   }, [calendarItems]);
 
