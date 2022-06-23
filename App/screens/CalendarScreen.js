@@ -2,26 +2,30 @@ import { useState, useEffect } from 'react';
 import { StyleSheet, Pressable, Modal, Alert, TextInput } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import DatePicker from 'react-native-modern-datepicker';
-
-import { Text, View } from '../components/Themed';
+import uuid from 'react-native-uuid';
 import moment from 'moment';
 
+import { Text, View } from '../components/Themed';
+
 import Data from '../resources/meetings.json';
-import { Button } from 'react-native-paper';
 
 export default function CalendarScreen() {
-  const [calendarItems, setCalendarItems] = useState();
+  const [calendarItems, setCalendarItems] = useState({});
 
-  const [calendarItem, setCalendarItem] = useState({});
+  const [title, setTitle] = useState();
+  const [description, setDescription] = useState();
+  const [location, setLocation] = useState();
+  const [startTime, setStartTime] = useState('00:00');
+
+  const [userInput, setUserInput] = useState({});
+  const [selectedDate, setSelectedDate] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   const [refreshData, setRefreshData] = useState(false);
 
   useEffect(() => {
-    setRefreshData(true);
-
-    setCalendarItems(Data);
-    setRefreshData(false);
-  }, []);
+    setUserInput({});
+    console.log('rerender has occured....');
+  }, [calendarItems]);
 
   const fetchCalendarData = () => {
     setRefreshData(true);
@@ -36,46 +40,72 @@ export default function CalendarScreen() {
         visible={modalVisible}
         onRequestClose={() => {
           Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
+          setModalVisible(false);
         }}
       >
         <View style={Styles.modelContainer}>
           <Text style={Styles.title}>Nieuwe activiteit</Text>
           <TextInput
             style={Styles.input}
-            onChangeText={(text) => {
-              setTitle(text);
+            onChangeText={(naam) => {
+              setTitle(naam);
             }}
             placeholder="Naam"
+            placeholderTextColor={'#000'}
+            autoFocus
           />
           <TextInput
             style={Styles.input}
-            onChangeText={(text) => {
-              setLocation(text);
+            onChangeText={(location) => {
+              setLocation(location);
             }}
             placeholder="Locatie"
+            placeholderTextColor={'#100'}
           />
           <TextInput
             style={Styles.input}
-            onChangeText={(text) => {
-              setDescription(text);
+            onChangeText={(description) => {
+              setDescription(description);
             }}
             placeholder="Notities"
+            placeholderTextColor={'#000'}
           />
           <DatePicker
             onDateChange={(date) => {
-              setSelectedDate(date);
+              setSelectedDate(moment(new Date(date)).format('YYYY-MM-DD'));
             }}
             onTimeChange={(time) => {
-              setSelectedTime(time);
+              setStartTime(time);
             }}
             minuteInterval={1}
+            date={new Date()}
           />
           <Pressable
             style={[Styles.button, Styles.buttonClose]}
             onPress={() => {
-              setDate(moment(new Date(selectedDate)).format('YYYY-MM-DD'));
-              setModalVisible(!modalVisible);
+              let input = {
+                id: uuid.v4(),
+                title,
+                description,
+                location,
+                startTime,
+              };
+
+              if (typeof calendarItems !== 'undefined') {
+                if (Object.keys(calendarItems).includes(selectedDate)) {
+                  let tempArray = calendarItems;
+                  tempArray[selectedDate].push(input);
+                  setCalendarItems({ ...calendarItems, tempArray });
+                  // calendarItems;
+                  setModalVisible(false);
+                } else {
+                  setCalendarItems({ ...calendarItems, [selectedDate]: [input] });
+                  setModalVisible(false);
+                }
+              } else {
+                setCalendarItems({ [selectedDate]: [input] });
+                setModalVisible(false);
+              }
             }}
           >
             <Text style={Styles.buttonText}>Voeg toe</Text>
@@ -91,10 +121,9 @@ export default function CalendarScreen() {
           return (
             <Pressable onPress={() => Alert.alert(item.id)} style={Styles.itemView}>
               <Text style={Styles.title}>{item.title}</Text>
-              <Text>{item.description}</Text>
               <Text>{item.location}</Text>
+              <Text>{item.description}</Text>
               <Text>{item.startTime}</Text>
-              <Text>{item.endTime}</Text>
             </Pressable>
           );
         }}

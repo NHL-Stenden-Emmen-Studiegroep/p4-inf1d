@@ -6,6 +6,13 @@
       "description": "Meeting in Coevorden",
       "location": "Coevorden",
       "startTime": "15:00"
+    },
+    {
+      "id": "dsbdshbcdskc",
+      "title": "meeting 2",
+      "description": "Meeting in Emmen",
+      "location": "Emmen",
+      "startTime": "20:00"
     }
   ],
   "2022-06-27": [
