@@ -1,10 +1,15 @@
-[
-    {
-        "id": 1,
-        "title": "Meeting",
-        "location": "Coevorden",
+{
+    "2022-06-30": [{
+        "title": "meeting",
         "description": "Meeting in Coevorden",
-        "selectedDate": "2022-06-16",
-        "selectedTime": "11:00"
-    }
-]
+        "location": "Coevorden",
+        "selectedTime": "15:00"
+    }],
+    "2022-06-27": [{
+        "id": "dsbdshbcdskc",
+        "title": "Hallo",
+        "description": "Welkom bij App",
+        "location": "wERK NOU",
+        "selectedTime": "22:00"
+    }]
+}
