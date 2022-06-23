@@ -19,7 +19,7 @@ const Stack = createNativeStackNavigator();
 
 export function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Loading" screenOptions={{ gestureEnabled: false }}>
+    <Stack.Navigator initialRouteName="Root" screenOptions={{ gestureEnabled: false }}>
       <Stack.Screen name="Loading" component={LoadingScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />

@@ -1,15 +1,20 @@
 {
-    "2022-06-30": [{
-        "title": "meeting",
-        "description": "Meeting in Coevorden",
-        "location": "Coevorden",
-        "selectedTime": "15:00"
-    }],
-    "2022-06-27": [{
-        "id": "dsbdshbcdskc",
-        "title": "Hallo",
-        "description": "Welkom bij App",
-        "location": "wERK NOU",
-        "selectedTime": "22:00"
-    }]
+  "2022-06-23": [
+    {
+      "id": "dsbdshbcdskc",
+      "title": "meeting",
+      "description": "Meeting in Coevorden",
+      "location": "Coevorden",
+      "startTime": "15:00"
+    }
+  ],
+  "2022-06-27": [
+    {
+      "id": "dsbdshbcdskc",
+      "title": "Hallo",
+      "description": "Welkom bij App",
+      "location": "wERK NOU",
+      "startTime": "22:00"
+    }
+  ]
 }
