@@ -17,13 +17,12 @@ export default function CalendarScreen() {
   const [location, setLocation] = useState();
   const [startTime, setStartTime] = useState('00:00');
 
-  const [userInput, setUserInput] = useState({});
   const [selectedDate, setSelectedDate] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   const [refreshData, setRefreshData] = useState(false);
 
   useEffect(() => {
-    setUserInput({});
+    setStartTime('00:00');
     console.log('rerender has occured....');
   }, [calendarItems]);
 
