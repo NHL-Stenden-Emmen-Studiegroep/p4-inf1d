@@ -1,10 +1,11 @@
-import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import ModelScreen from '../screens/ModalScreen';
-import NotFoundScreen from '../screens/NotFoundScreen';
-import { BottomTabNavigator } from './BottomTabNavigator';
-import Calendar from '../screens/Calendar';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
+
+import { DrawerNavigator } from './DrawerNavigator';
+import { LoadingScreen } from '../screens/LoadingScreen';
+import { WelcomeScreen } from '../screens/WelcomeScreen';
+import { ConnectScreen } from '../screens/ConnectScreen';
 
 export default function Navigation({ colorScheme }) {
   return (
@@ -16,15 +17,13 @@ export default function Navigation({ colorScheme }) {
 
 const Stack = createNativeStackNavigator();
 
-function RootNavigator() {
+export function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Calendar">
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Screen name="Calendar" component={Calendar} options={{ headerShown: false }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModelScreen} />
-      </Stack.Group>
+    <Stack.Navigator initialRouteName="Loading" screenOptions={{ gestureEnabled: false }}>
+      <Stack.Screen name="Loading" component={LoadingScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Root" component={DrawerNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Connect" component={ConnectScreen} options={{ headerShown: true }} />
     </Stack.Navigator>
   );
 }
