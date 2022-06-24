@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
-import { StyleSheet, Pressable } from "react-native";
+import { useState, useEffect, useContext } from 'react';
+import { StyleSheet, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Timer } from 'react-native-stopwatch-timer';
+import axios from 'axios';
 
-import { View, Text } from "../Themed";
+import { StateContext } from '../StateContext';
+import { View, Text } from '../Themed';
 import Colors from '../../constants/Colors';
-import { TimerSettingsModal } from "./TimerSettingsModal";
+import { TimerSettingsModal } from './TimerSettingsModal';
 
-export function TimerScreen({ nav, timer }) {
+export function TimerScreen() {
+  const [hardwareIp, _] = useContext(StateContext);
+
   const [isTimerStart, setIsTimerStart] = useState(false);
   const [resetTimer, setResetTimer] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
@@ -15,18 +19,32 @@ export function TimerScreen({ nav, timer }) {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(25);
   const [hours, setHours] = useState(0);
-  const [TimerDuration, setTimerDuration] = useState()
-
+  const [TimerDuration, setTimerDuration] = useState();
 
   useEffect(() => {
     setTimerDuration(((hours * 60 + minutes) * 60 + seconds) * 1000);
   }, [seconds, minutes, hours]);
 
-
+  const onStart = (time) => {
+    axios({
+      method: 'post',
+      url: `http://` + hardwareIp + `:8000/timer/${time}`,
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((rej) => {
+        console.log(rej);
+      });
+  };
 
   return (
     <View style={Styles.container}>
-      <TimerSettingsModal modalVisible={modalVisible} setModalVisible={setModalVisible} timerConfig={{seconds, setSeconds, minutes, setMinutes, hours, setHours}}/>
+      <TimerSettingsModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+        timerConfig={{ seconds, setSeconds, minutes, setMinutes, hours, setHours }}
+      />
       <View style={Styles.Header}>
         <Text style={Styles.SectionTitle}>Pomodoro Timer</Text>
         {/* <Pressable onPress={() => nav.navigate('TimerSettings')}> */}
@@ -40,18 +58,22 @@ export function TimerScreen({ nav, timer }) {
           totalDuration={TimerDuration}
           start={isTimerStart}
           reset={resetTimer}
-          handleFinish={() => {
-            alert('Timer klaar');
-          }}
+          handleFinish={() => {}}
         />
       </View>
       <View style={Styles.TimerButtons}>
         <Pressable
           style={Styles.button}
           onPress={() => {
-            if (setIsTimerStart(!isTimerStart)) {
+            if (!isTimerStart) {
+              console.log('Timer is started');
+              onStart(TimerDuration);
               setIsTimerStart(true);
+            } else {
+              console.log('Timer is stopped');
+              setIsTimerStart(false);
             }
+
             setResetTimer(false);
           }}
         >
@@ -64,6 +86,7 @@ export function TimerScreen({ nav, timer }) {
         <Pressable
           style={Styles.button}
           onPress={() => {
+            console.log('first');
             setIsTimerStart(false);
             setResetTimer(true);
           }}
@@ -102,7 +125,7 @@ const Styles = StyleSheet.create({
   },
   Timer: {
     container: {
-      backgroundColor:  Colors.light.textColorWhite,
+      backgroundColor: Colors.light.textColorWhite,
       padding: 5,
       borderRadius: 5,
       width: 220,
@@ -110,7 +133,7 @@ const Styles = StyleSheet.create({
     text: {
       fontSize: 45,
       color: Colors.light.colorGray800,
-      alignSelf: "center",
+      alignSelf: 'center',
     },
   },
   TimerButtons: {

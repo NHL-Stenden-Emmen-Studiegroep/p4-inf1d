@@ -4,16 +4,16 @@ import { Text, View } from '../components/Themed';
 import { TimerScreen } from '../components/Pomodoro/Timer';
 import { StateContext } from '../components/StateContext';
 
-export default function HomeScreen({ navigation }) {
-  const [hardwareIp, setHardwareIp] = useContext(StateContext);
+import axios from 'axios';
 
-  const onStart = () => {};
+export default function HomeScreen() {
+  const [hardwareIp, _] = useContext(StateContext);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{hardwareIpi}</Text>
+      <Text style={styles.title}>{hardwareIp}</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <TimerScreen nav={navigation} onStart={onStart} />
+      <TimerScreen />
     </View>
   );
 }
