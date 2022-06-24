@@ -24,7 +24,7 @@ export function ConnectScreen({ navigation }) {
       setLoading(true);
       setError(false);
 
-      axios({ method: 'get', url: `http://` + userInput + `:8000/` })
+      axios({ method: 'post', url: `http://` + userInput + `:8000/ip` })
         .then((res) => {
           if (res.status === 200) {
             setHardwareIp(userInput);
