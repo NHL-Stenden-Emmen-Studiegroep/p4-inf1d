@@ -94,7 +94,6 @@ export default function CalendarScreen() {
                   let tempArray = calendarItems;
                   tempArray[selectedDate].push(input);
                   setCalendarItems({ ...calendarItems, tempArray });
-                  // calendarItems;
                   setModalVisible(false);
                 } else {
                   setCalendarItems({ ...calendarItems, [selectedDate]: [input] });
@@ -107,6 +106,9 @@ export default function CalendarScreen() {
             }}
           >
             <Text style={Styles.buttonText}>Voeg toe</Text>
+          </Pressable>
+          <Pressable style={[Styles.button, Styles.buttonCancel]} onPress={() => setModalVisible(false)}>
+            <Text style={Styles.buttonText}>Cancel</Text>
           </Pressable>
         </View>
       </Modal>
@@ -165,7 +167,7 @@ const Styles = StyleSheet.create({
   },
   title: {
     alignSelf: 'center',
-    // margin: 10,
+    margin: 10,
     width: '50%',
     fontSize: 18,
     fontWeight: 'bold',
@@ -188,14 +190,20 @@ const Styles = StyleSheet.create({
   },
   button: {
     padding: 10,
+    margin: 10,
     elevation: 2,
   },
   buttonOpen: {
-    backgroundColor: '#28B3EB',
+    backgroundColor: '#008FC6',
   },
   buttonClose: {
     alignSelf: 'center',
     width: '80%',
-    backgroundColor: '#28B3EB',
+    backgroundColor: '#008FC6',
+  },
+  buttonCancel: {
+    alignSelf: 'center',
+    width: '80%',
+    backgroundColor: '#808080',
   },
 });
