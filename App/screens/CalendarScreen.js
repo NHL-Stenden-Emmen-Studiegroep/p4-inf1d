@@ -79,7 +79,7 @@ export default function CalendarScreen() {
             date={new Date()}
           />
           <Pressable
-            style={[Styles.button, Styles.buttonClose]}
+            style={[Styles.buttonModal, Styles.buttonClose]}
             onPress={() => {
               let input = {
                 id: uuid.v4(),
@@ -107,7 +107,7 @@ export default function CalendarScreen() {
           >
             <Text style={Styles.buttonText}>Voeg toe</Text>
           </Pressable>
-          <Pressable style={[Styles.button, Styles.buttonCancel]} onPress={() => setModalVisible(false)}>
+          <Pressable style={[Styles.buttonModal, Styles.buttonCancel]} onPress={() => setModalVisible(false)}>
             <Text style={Styles.buttonText}>Cancel</Text>
           </Pressable>
         </View>
@@ -189,6 +189,10 @@ const Styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
+    padding: 10,
+    elevation: 2,
+  },
+  buttonModal: {
     padding: 10,
     margin: 10,
     elevation: 2,
