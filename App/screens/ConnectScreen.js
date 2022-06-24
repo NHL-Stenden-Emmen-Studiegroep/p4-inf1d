@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import Background from '../components/Background';
 import { View, Text } from '../components/Themed';
-import { StyleSheet, Pressable, TextInput } from 'react-native';
+import { StyleSheet, Pressable, TextInput, ActivityIndicator } from 'react-native';
 import Colors from '../constants/Colors';
 import { StateContext } from '../components/StateContext';
 import { useStorage } from '../hooks/useStorage';
@@ -15,7 +15,7 @@ export function ConnectScreen({ navigation }) {
   const { getItem: getStorageIp, setItem: setStorageIp } = useAsyncStorage('@storage_ip');
 
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [userInput, setUserInput] = useState('192.168.2.1');
 
   const handleSubmit = () => {
@@ -59,8 +59,11 @@ export function ConnectScreen({ navigation }) {
           {error && <Text style={styles.textError}>{error}</Text>}
         </View>
         <View style={styles.flex}>
-          {loading === true ? (
-            <Text style={styles.text}>Loading...</Text>
+          {isLoading === true ? (
+            <>
+              <ActivityIndicator style={{ marginTop: 15 }} size={'large'} color="#FFFFFF" />
+              <Text style={[styles.text, { marginTop: 15 }]}>Loading...</Text>
+            </>
           ) : (
             <TextInput
               style={styles.input}
@@ -70,7 +73,7 @@ export function ConnectScreen({ navigation }) {
             />
           )}
         </View>
-        <Pressable style={styles.button} disabled={loading} onPress={handleSubmit}>
+        <Pressable style={styles.button} disabled={isLoading} onPress={handleSubmit}>
           <Text style={styles.text}>Connect</Text>
         </Pressable>
       </View>
