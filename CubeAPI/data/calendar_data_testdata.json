@@ -1,0 +1,50 @@
+[
+  {
+    "date": "2022-06-30",
+    "title": "title of the meeting",
+    "location": "Location of the meeting",
+    "description": "Description of the meeting",
+    "time": {"begin": "09:00", "end": "13:00"}
+  },
+  {"date": "2022-07-31",
+    "title": "title of the meeting",
+    "location": "Location of the meeting",
+    "description": "Description of the meeting",
+    "time": {"begin": "09:00", "end": "13:00"}
+  },
+  {
+    "date": "2022-06-10",
+    "title": "title of the meeting",
+    "location": "Location of the meeting",
+    "description": "Description of the meeting",
+    "time": {"begin": "09:00", "end": "13:00"}
+  },
+  {
+    "date": "2022-06-10",
+    "title": "title of the meeting",
+    "location": "Location of the meeting",
+    "description": "Description of the meeting",
+    "time": {"begin": "09:00", "end": "13:00"}
+  },
+  {
+    "date": "2022-06-10",
+    "title": "title of the meeting",
+    "location": "Location of the meeting",
+    "description": "Description of the meeting",
+    "time": {"begin": "09:00", "end": "13:00"}
+  },
+  {
+    "date": "2022-06-10",
+    "title": "title of the meeting",
+    "location": "Location of the meeting",
+    "description": "Description of the meeting",
+    "time": {"begin": "09:00", "end": "13:00"}
+  },
+  {
+    "date": "2022-06-10",
+    "title": "title of the meeting",
+    "location": "Location of the meeting",
+    "description": "Description of the meeting",
+    "time": {"begin": "09:00", "end": "13:00"}
+  }
+]
