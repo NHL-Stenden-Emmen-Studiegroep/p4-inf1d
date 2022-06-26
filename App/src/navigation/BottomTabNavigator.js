@@ -1,17 +1,23 @@
 import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, useColorScheme } from 'react-native';
 import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
+<<<<<<<< HEAD:App/src/navigation/BottomTabNavigator.tsx
 import { RootTabParamList, RootTabScreenProps } from '../../types';
+========
+>>>>>>>> 0162c8a23e9022973e2fc094f7074b95ef381f3d:App/src/navigation/BottomTabNavigator.js
 
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
-const BottomTab = createBottomTabNavigator<RootTabParamList>();
+const BottomTab = createBottomTabNavigator();
+
+/**
+ * Not in use as of now. will find a place for it later.
+ */
 export function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
@@ -25,7 +31,7 @@ export function BottomTabNavigator() {
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}
-        options={({ navigation }: RootTabScreenProps<'Home'>) => ({
+        options={({ navigation }) => ({
           title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
@@ -46,7 +52,6 @@ export function BottomTabNavigator() {
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
-type TabBarIconType = {};
-function TabBarIcon(props: { name: React.ComponentProps<typeof FontAwesome>['name']; color: string }) {
+function TabBarIcon(props) {
   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
 }

@@ -1,14 +1,23 @@
+import { useContext } from 'react';
 import { StyleSheet } from 'react-native';
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+<<<<<<<< HEAD:App/src/screens/ExampleScreen.tsx
 import { RootTabScreenProps } from '../../types';
+========
+import { TimerScreen } from '../components/Pomodoro/Timer';
+import { StateContext } from '../components/StateContext';
 
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+import axios from 'axios';
+
+export default function HomeScreen() {
+  const [hardwareIp, _] = useContext(StateContext);
+>>>>>>>> 0162c8a23e9022973e2fc094f7074b95ef381f3d:App/src/screens/HomeScreen.js
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>{hardwareIp}</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <TimerScreen />
     </View>
   );
 }

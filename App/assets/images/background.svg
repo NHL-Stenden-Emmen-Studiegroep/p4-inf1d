@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="428" height="926" viewBox="0 0 428 926">
+  <defs>
+    <clipPath id="clip-Optional_loading_screens">
+      <rect width="428" height="926"/>
+    </clipPath>
+  </defs>
+  <g id="Optional_loading_screens" data-name="Optional loading screens" clip-path="url(#clip-Optional_loading_screens)">
+    <rect width="428" height="926" fill="#fff"/>
+    <g id="Background" transform="translate(-432 -322)">
+      <circle id="Ellipse_1" data-name="Ellipse 1" cx="347.5" cy="347.5" r="347.5" transform="translate(55 266)" fill="#0075a2"/>
+      <circle id="Ellipse_2" data-name="Ellipse 2" cx="347.5" cy="347.5" r="347.5" transform="translate(486 595)" fill="#008fc6"/>
+      <circle id="Ellipse_3" data-name="Ellipse 3" cx="347.5" cy="347.5" r="347.5" transform="translate(0 915)" fill="#fff"/>
+      <circle id="Ellipse_4" data-name="Ellipse 4" cx="347.5" cy="347.5" r="347.5" transform="translate(520)" fill="#fff"/>
+      <g id="Rectangle_6" data-name="Rectangle 6" transform="translate(427 317)" fill="none" stroke="#707070" stroke-width="5">
+        <rect width="438" height="936" stroke="none"/>
+        <rect x="2.5" y="2.5" width="433" height="931" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>
