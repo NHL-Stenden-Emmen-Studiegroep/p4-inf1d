@@ -29,7 +29,6 @@ class BackgroundTasks(threading.Thread):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect(("8.8.8.8", 80))
         ip = s.getsockname()[0]
-        print(ip)
         text = "mijn IP is "+ip
         while ip_set == 0:
             tts = TTS(text)
@@ -38,7 +37,6 @@ class BackgroundTasks(threading.Thread):
 
 @app.on_event("startup")
 async def startup_event():
-    print("test")
     t = BackgroundTasks()
     t.start()
 
